@@ -8,5 +8,8 @@
     <string name="text_email">Email</string>
     <string name="text_password">Password</string>
     <string name="text_register">Register</string>
-    <string name="title_activity_garrulous">GarrulousActivity</string>
+    <string name="text_go">Go</string>
+    <string name="title_activity_garrulous">Garrulous</string><!-- need to take this out -->
+    <string name="title_activity_message">Message</string>
+    <string name="title_search">Search</string>
 </resources>
