@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
-        android:textSize="36dp"
+        android:textSize="28dp"
         android:id="@+id/loginEmailTextView"
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
@@ -53,11 +53,11 @@
         android:text="Password"
         android:id="@+id/passwordTextView"
         android:textColor="#ffffff"
-        android:textSize="36dp"
+        android:textSize="28dp"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/GarrulousTextView"
-        android:layout_alignStart="@+id/GarrulousTextView"
-        android:layout_marginTop="35dp" />
+        android:layout_alignLeft="@+id/loginEmailTextView"
+        android:layout_alignStart="@+id/loginEmailTextView" />
 
     <EditText
         android:layout_width="fill_parent"

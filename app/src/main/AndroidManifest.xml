@@ -28,6 +28,11 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".GarrulousActivity"
+            android:label="@string/title_activity_garrulous"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
