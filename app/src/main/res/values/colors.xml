@@ -3,4 +3,6 @@
     <color name="colorPrimary">#FFCD28</color>
     <color name="colorPrimaryDark">#FFCD28</color>
     <color name="colorAccent">#FFCD28</color>
+    <color name="garrulousWhite">#FFFFFF</color>
+    <color name="garrulousOrange">#FFCD28</color>
 </resources>

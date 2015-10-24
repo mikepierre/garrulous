@@ -18,28 +18,30 @@
         android:text="@string/app_name"
         android:id="@+id/registerTextView"
         android:layout_marginTop="41dp"
-        android:textColor="#ffffff"
-        android:textSize="42dp"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="42sp"
         android:textStyle="bold|italic"
         android:fontFamily="Helvetica"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_first_name"
         android:id="@+id/firstNameTextName"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:layout_marginTop="43dp"
         android:textColor="#ffffff"
         android:layout_below="@+id/registerTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/firstNameEditTextRegister"
         android:layout_below="@+id/firstNameTextName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -49,11 +51,12 @@
         android:layout_height="wrap_content"
         android:text="@string/text_last_name"
         android:id="@+id/lastNameTextView"
-        android:textSize="28dp"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/editText2"
+        android:textSize="28sp"
+        android:textColor="@color/garrulousWhite"
+        android:layout_below="@+id/firstNameEditTextRegister"
         android:layout_alignRight="@+id/firstNameTextName"
-        android:layout_alignEnd="@+id/firstNameTextName" />
+        android:layout_alignEnd="@+id/firstNameTextName"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="fill_parent"
@@ -67,17 +70,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_email"
-        android:id="@+id/textView"
-        android:textSize="28dp"
-        android:textColor="#ffffff"
+        android:id="@+id/emailTextView"
+        android:textSize="28sp"
+        android:textColor="@color/garrulousWhite"
         android:layout_below="@+id/lastNameEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/emailEditText"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/emailTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -86,10 +90,11 @@
         android:layout_height="wrap_content"
         android:text="@string/text_password"
         android:id="@+id/passwordTextView"
-        android:textSize="28dp"
-        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textColor="@color/garrulousWhite"
         android:layout_below="@+id/emailEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
 
     <EditText
         android:layout_width="fill_parent"
@@ -103,10 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_register"
-        android:id="@+id/button2"
-        android:background="#FFCD28"
-        android:textColor="#FFFFFF"
-        android:textSize="21dp"
+        android:id="@+id/registerButton"
+        android:background="@color/garrulousOrange"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="21sp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/passwordEditText"
         android:layout_alignEnd="@+id/passwordEditText"

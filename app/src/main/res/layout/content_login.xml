@@ -1,88 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_login" tools:context="xyz.garrulous.garrulous.LoginActivity"
-    android:background="@android:color/holo_blue_light"
-    >
+    tools:context="xyz.garrulous.garrulous.LoginActivity"
+    tools:showIn="@layout/activity_login">
 
     <TextView
+        android:id="@+id/GarrulousTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_name"
-        android:id="@+id/GarrulousTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="115dp"
-        android:textColor="#ffffff"
-        android:textSize="42dp"
-        android:textStyle="bold|italic"
-        android:fontFamily="Helvetica" />
+        android:fontFamily="Helvetica"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="42sp"
+        android:textStyle="bold|italic" />
 
     <TextView
+        android:id="@+id/loginEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="28dp"
-        android:id="@+id/loginEmailTextView"
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffff" />
+        android:gravity="center"
+        android:text="@string/text_email"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="28sp" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:elegantTextHeight="true"/>
+        android:layout_centerVertical="true"
+        android:elegantTextHeight="true"
+        android:textColor="@color/garrulousWhite"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/passwordTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password"
-        android:id="@+id/passwordTextView"
-        android:textColor="#ffffff"
-        android:textSize="28dp"
-        android:layout_marginTop="45dp"
         android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/loginEmailTextView"
-        android:layout_alignStart="@+id/loginEmailTextView" />
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="@string/text_password"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="28sp" />
 
     <EditText
+        android:id="@+id/passwordEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordEditText"
-        android:layout_below="@+id/passwordTextView"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:elegantTextHeight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/passwordTextView"
+        android:elegantTextHeight="true"
+        android:ems="10"
+        android:inputType="textPassword" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/passwordTextView"
         android:layout_alignEnd="@+id/passwordTextView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#FFCD28"
-        android:textColor="#FFFFFF"
-        android:textSize="21dp" />
+        android:layout_alignRight="@+id/passwordTextView"
+        android:background="@color/garrulousOrange"
+        android:text="Sign In"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="21sp" />
 
 
 </RelativeLayout>
