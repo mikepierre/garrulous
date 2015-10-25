@@ -19,28 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
             android:name=".GarrulousActivity"
             android:label="@string/title_activity_garrulous"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".MessageActivity"
-            android:label="@string/title_activity_message"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".EditProfileActivity"
-            android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
