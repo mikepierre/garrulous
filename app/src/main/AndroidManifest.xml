@@ -23,6 +23,15 @@
             android:label="@string/title_activity_garrulous"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".Activities.ViewProfileActivity" >
+        </activity>
+        <activity android:name=".Activities.EditProfileActivity" >
+        </activity>
     </application>
 
 </manifest>

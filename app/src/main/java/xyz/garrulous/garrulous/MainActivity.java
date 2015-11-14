@@ -1,22 +1,27 @@
 package xyz.garrulous.garrulous;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import xyz.garrulous.garrulous.Activities.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    int duration = Toast.LENGTH_SHORT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar); //comment this out for time being.
+        //setSupportActionBar(toolbar); //comment this out for time being.
     }
 
     @Override
@@ -39,5 +44,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void LoginEventHandeler(View view){
+        EditText email = (EditText) findViewById(R.id.signInEditText);
+        EditText password = (EditText) findViewById(R.id.passwordEditText);
+        if(email.getText().toString().matches("") &&
+                password.getText().toString().matches("")){
+            Toast toast = Toast.makeText(getApplicationContext(), "Missing Info",
+                    duration);
+            toast.show();
+
+        } else {
+            Intent intent = new Intent(this,GarrulousActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void NewUserEventHandeler(View view){
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 }

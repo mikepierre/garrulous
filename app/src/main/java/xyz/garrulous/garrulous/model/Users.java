@@ -1,4 +1,4 @@
-package xyz.garrulous.garrulous.model;
+package xyz.garrulous.garrulous.Model;
 
 /**
  * Created by michaelpierre on 11/14/15.

@@ -1,5 +1,5 @@
-package xyz.garrulous.garrulous.model;
-import java.sql.Time;
+package xyz.garrulous.garrulous.Model;
+
 /**
  * Created by michaelpierre on 11/14/15.
  */
