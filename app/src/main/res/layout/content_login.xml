@@ -71,7 +71,8 @@
         android:layout_below="@+id/passwordTextView"
         android:elegantTextHeight="true"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/garrulousWhite"/>
 
     <TextView
         android:layout_width="fill_parent"

@@ -1,5 +1,6 @@
 package xyz.garrulous.garrulous;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,13 +10,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import xyz.garrulous.garrulous.Activities.EditProfileActivity;
+import xyz.garrulous.garrulous.Activities.ViewProfileActivity;
+
 public class GarrulousActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garrulous);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //need to adjust this.
         setSupportActionBar(toolbar);
 
     }
@@ -31,12 +35,28 @@ public class GarrulousActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean ViewSettingsEventHandler(MenuItem item){
+
+        switch (item.getItemId()){
+
+            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
+                startActivity(a);
+                break;
+
+            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
+                startActivity(b);
+                break;
+
+            case R.id.action_home_screen: Intent c = new Intent(this,GarrulousActivity.class);
+                startActivity(c);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

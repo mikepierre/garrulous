@@ -19,5 +19,6 @@
     <string name="text_age">Age</string>
     <string name="text_about">About</string>
     <string name="text_update">Update</string>
+    <string name="title_activity_view_profile">ViewProfile</string>
 
 </resources>

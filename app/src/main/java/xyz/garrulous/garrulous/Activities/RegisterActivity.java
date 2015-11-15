@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import xyz.garrulous.garrulous.AsyncTasks.RegisterTasks;
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.R;
+import xyz.garrulous.garrulous.Requests.GetRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -21,8 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+
     }
 
     public void regsiterNewUserHandler(View view){
@@ -42,10 +43,23 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             // Add user to database via webservice.
             // Start Activity and create session
+
+            GetRequest g = new GetRequest();
+            g.setMethod("GET");
+            g.setUri("http://10.0.2.2/ga/register");
+            g.setParam("first_name", "First Name");
+            g.setParam("last_name", "Last Name");
+            g.setParam("email","Email");
+            g.setParam("password","password");
+
+            RegisterTasks registerTask = new RegisterTasks();
+            registerTask.execute(g);
+
             Intent intent = new Intent(this,GarrulousActivity.class);
             startActivity(intent);
         }
 
     }
+
 
 }

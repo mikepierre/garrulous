@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
+import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.R;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -15,7 +15,6 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,8 +33,23 @@ public class EditProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void  EditProfileEventHandler(View view){
-        Intent intent = new Intent(this,EditProfileActivity.class);
-        startActivity(intent);
+    public boolean ViewSettingsEventHandler(MenuItem item){
+
+        switch (item.getItemId()){
+
+            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
+                startActivity(a);
+                break;
+
+            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
+                startActivity(b);
+                break;
+
+            case R.id.action_home_screen: Intent c = new Intent(this, GarrulousActivity.class);
+                startActivity(c);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

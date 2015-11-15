@@ -8,7 +8,6 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"
-        android:onClick="SettingsEventHandler"
         />
 
     <item
@@ -16,7 +15,7 @@
         android:orderInCategory="101"
         android:title="View Profile"
         app:showAsAction="always"
-        android:onClick="ViewProfileEventHandler"
+        android:onClick="ViewSettingsEventHandler"
         />
 
     <item
@@ -24,6 +23,15 @@
         android:orderInCategory="102"
         android:title="Edit Profile"
         app:showAsAction="always"
-        android:onClick="EditProfileEventHandler"
+        android:onClick="ViewSettingsEventHandler"
         />
+
+    <item
+        android:id="@+id/action_home_screen"
+        android:orderInCategory="103"
+        android:title="@string/action_settings"
+        app:showAsAction="never"
+        android:onClick="ViewSettingsEventHandler"
+        />
+
 </menu>

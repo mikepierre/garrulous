@@ -15,9 +15,9 @@ public class ViewProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile); // need to create a view profile UI.
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_view_profile);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
     }
 
 
@@ -39,8 +39,19 @@ public class ViewProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void ViewProfileEventHandler(View view){
-        Intent intent = new Intent(this,ViewProfileActivity.class);
-        startActivity(intent);
+    public boolean ViewSettingsEventHandler(MenuItem item){
+
+        switch (item.getItemId()){
+
+            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
+                startActivity(a);
+                break;
+
+            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
+                startActivity(b);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
