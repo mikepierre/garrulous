@@ -4,15 +4,6 @@ package xyz.garrulous.garrulous.Model;
  * Created by michaelpierre on 11/14/15.
  */
 public class AboutUsers {
-    public AboutUsers(int id, int userId, String age, String aboutMe, String location,
-                      String university) {
-        this.id = id;
-        this.userId = userId;
-        this.age = age;
-        this.aboutMe = aboutMe;
-        this.location = location;
-        this.university = university;
-    }
 
     int id;
     int userId;

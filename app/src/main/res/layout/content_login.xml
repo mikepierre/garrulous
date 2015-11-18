@@ -99,7 +99,8 @@
         android:background="@color/garrulousOrange"
         android:text="Sign In"
         android:textColor="@color/garrulousWhite"
-        android:textSize="21sp" />
+        android:textSize="21sp"
+        android:onClick="LoginEventHandler"/>
 
 
 </RelativeLayout>

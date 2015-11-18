@@ -13,17 +13,6 @@ public class Users {
     String password;
     String phone;
 
-    public Users(int uid, String username, String dateJoined, String email, String firstName,
-                 String lastName, String password, String phone) {
-        this.uid = uid;
-        this.username = username;
-        this.dateJoined = dateJoined;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.phone = phone;
-    }
 
     public int getUid() {
         return uid;

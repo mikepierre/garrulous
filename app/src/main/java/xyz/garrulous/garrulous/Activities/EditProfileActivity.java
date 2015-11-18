@@ -1,19 +1,43 @@
 package xyz.garrulous.garrulous.Activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.HashMap;
+
 import xyz.garrulous.garrulous.GarrulousActivity;
+import xyz.garrulous.garrulous.HttpManager;
+import xyz.garrulous.garrulous.Parsers.EditProfileParser;
 import xyz.garrulous.garrulous.R;
+import xyz.garrulous.garrulous.Requests.GetRequest;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_profile);
+        GetRequest g = new GetRequest();
+        g.setMethod("GET");
+        g.setUri("http://10.0.2.2/"); // get user by id
+        g.setParam("id", "1");
+        EditProfileTask editProfileTask = new EditProfileTask();
+        EditProfileParser editProfileParser = new EditProfileParser();
+
+        try{
+            String  Response = editProfileTask.execute(g).get();
+            HashMap hm = EditProfileParser.GetUserById(Response, 1);
+            Log.d("User Info ", String.valueOf(hm));
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -52,4 +76,21 @@ public class EditProfileActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public class EditProfileTask extends AsyncTask<GetRequest, String, String> {
+
+        @Override
+        protected String doInBackground(GetRequest... params) {
+            String content = HttpManager.getData(params[0]);
+            return content;
+        }
+
+        @Override
+        protected  void onPostExecute(String result) {
+
+            super.onPostExecute(result);
+
+        }
+    }
+
 }

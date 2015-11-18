@@ -1,27 +1,43 @@
 package xyz.garrulous.garrulous;
 
+import android.app.ListActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import xyz.garrulous.garrulous.Activities.EditProfileActivity;
+import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Activities.ViewProfileActivity;
+import xyz.garrulous.garrulous.Adapter.UserAdapter;
+import xyz.garrulous.garrulous.Model.Users;
+import xyz.garrulous.garrulous.Parsers.UserParser;
+import xyz.garrulous.garrulous.Requests.GetRequest;
+
 
 public class GarrulousActivity extends AppCompatActivity {
 
+    List<Users> usersList;
+    List<UserListTask> userListTasks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garrulous);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //need to adjust this.
         setSupportActionBar(toolbar);
-
+        Log.d("New Activity Garrulous", "Started");
+        userListTasks = new ArrayList<>();
+        requestData();
     }
 
     @Override
@@ -58,5 +74,54 @@ public class GarrulousActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void requestData(){
+        UserListTask userListTask = new UserListTask();
+        GetRequest g = new GetRequest();
+        g.setMethod("GET");
+        g.setUri("http://10.0.2.2/"); // get all users
+        userListTask.execute(g);
+    }
+
+
+    protected void updateDisplay(){
+        UserAdapter userAdapter = new UserAdapter(this, R.layout.users_list, usersList);
+        final ListView userList = (ListView)findViewById(R.id.listView);
+        userList.setAdapter(userAdapter);
+
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(GarrulousActivity.this,ViewProfileActivity.class);
+                intent.putExtra("pos",i);
+                startActivity(intent);
+
+                Log.d("Log on click", "Clicked"+ i);
+                finish();
+            }
+        });
+
+    }
+
+
+    private class UserListTask extends AsyncTask<GetRequest, String, String>{
+        @Override
+        protected void onPreExecute() {
+            userListTasks.add(this);
+        }
+        @Override
+        protected String doInBackground(GetRequest... params) {
+            String content = HttpManager.getData(params[0]);
+            return content;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+
+            usersList = UserParser.parseUsers(result);
+            Log.d("Results" , result);
+            updateDisplay();
+        }
+
     }
 }
