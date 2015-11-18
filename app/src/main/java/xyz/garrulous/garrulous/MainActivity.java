@@ -16,7 +16,8 @@ import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Parsers.LoginParser;
-import xyz.garrulous.garrulous.Requests.GetRequest;
+import xyz.garrulous.garrulous.Requests.Get;
+import xyz.garrulous.garrulous.Requests.Post;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,14 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             Intent intent = new Intent(this,GarrulousActivity.class);
-            GetRequest g = new GetRequest();
-            g.setMethod("GET");
-            g.setUri("http://10.0.2.2/"); // login
-            g.setParam("email", "mike@mike.com"); // setting users input
-            g.setParam("password", "pass");
+            // This should be POST
+            Post p = new Post();
+            p.setParam("email", "mike@mike.com"); // setting users input
+            p.setParam("password", "pass");
             LoginTask loginTask = new LoginTask();
             try {
-                String Response = loginTask.execute(g).get();
+                String Response = loginTask.execute(p).get();
                 LoginParser loginParser = new LoginParser();
 
                 String[] ResponseArray = loginParser.setLoginInfo(Response); // will change after.
@@ -95,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public class LoginTask extends AsyncTask<GetRequest, String, String>{
+    public class LoginTask extends AsyncTask<Get, String, String>{
 
         @Override
-        protected String doInBackground(GetRequest... params) {
+        protected String doInBackground(Get... params) {
             String content = HttpManager.getData(params[0]);
             return content;
         }

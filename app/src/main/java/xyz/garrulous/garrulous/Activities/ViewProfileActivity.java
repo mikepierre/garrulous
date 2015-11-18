@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.Parsers.ViewUserParser;
 import xyz.garrulous.garrulous.R;
-import xyz.garrulous.garrulous.Requests.GetRequest;
+import xyz.garrulous.garrulous.Requests.Get;
 
 public class ViewProfileActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class ViewProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
-        GetRequest g = new GetRequest();
+        Get g = new Get();
         g.setMethod("GET");
         g.setUri("http://10.0.2.2/"); // all users web service
         ViewProfileTask viewProfileTask = new ViewProfileTask();
@@ -84,10 +84,10 @@ public class ViewProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class ViewProfileTask extends AsyncTask<GetRequest, String, String> {
+    public class ViewProfileTask extends AsyncTask<Get, String, String> {
 
         @Override
-        protected String doInBackground(GetRequest... params) {
+        protected String doInBackground(Get... params) {
             String content = HttpManager.getData(params[0]);
             return content;
         }

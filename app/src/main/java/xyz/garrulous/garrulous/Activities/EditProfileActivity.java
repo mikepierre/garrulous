@@ -14,7 +14,7 @@ import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.Parsers.EditProfileParser;
 import xyz.garrulous.garrulous.R;
-import xyz.garrulous.garrulous.Requests.GetRequest;
+import xyz.garrulous.garrulous.Requests.Get;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        GetRequest g = new GetRequest();
+        Get g = new Get();
         g.setMethod("GET");
         g.setUri("http://10.0.2.2/"); // get user by id
         g.setParam("id", "1");
@@ -77,10 +77,10 @@ public class EditProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class EditProfileTask extends AsyncTask<GetRequest, String, String> {
+    public class EditProfileTask extends AsyncTask<Get, String, String> {
 
         @Override
-        protected String doInBackground(GetRequest... params) {
+        protected String doInBackground(Get... params) {
             String content = HttpManager.getData(params[0]);
             return content;
         }

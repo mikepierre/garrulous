@@ -1,6 +1,5 @@
 package xyz.garrulous.garrulous;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,12 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xyz.garrulous.garrulous.Activities.EditProfileActivity;
-import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Activities.ViewProfileActivity;
 import xyz.garrulous.garrulous.Adapter.UserAdapter;
 import xyz.garrulous.garrulous.Model.Users;
 import xyz.garrulous.garrulous.Parsers.UserParser;
-import xyz.garrulous.garrulous.Requests.GetRequest;
+import xyz.garrulous.garrulous.Requests.Get;
 
 
 public class GarrulousActivity extends AppCompatActivity {
@@ -78,9 +76,7 @@ public class GarrulousActivity extends AppCompatActivity {
 
     private void requestData(){
         UserListTask userListTask = new UserListTask();
-        GetRequest g = new GetRequest();
-        g.setMethod("GET");
-        g.setUri("http://10.0.2.2/"); // get all users
+        Get g = new Get();
         userListTask.execute(g);
     }
 
@@ -105,13 +101,13 @@ public class GarrulousActivity extends AppCompatActivity {
     }
 
 
-    private class UserListTask extends AsyncTask<GetRequest, String, String>{
+    private class UserListTask extends AsyncTask<Get, String, String>{
         @Override
         protected void onPreExecute() {
             userListTasks.add(this);
         }
         @Override
-        protected String doInBackground(GetRequest... params) {
+        protected String doInBackground(Get... params) {
             String content = HttpManager.getData(params[0]);
             return content;
         }

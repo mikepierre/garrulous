@@ -2,10 +2,7 @@ package xyz.garrulous.garrulous.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,7 +10,7 @@ import android.widget.Toast;
 import xyz.garrulous.garrulous.AsyncTasks.RegisterTasks;
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.R;
-import xyz.garrulous.garrulous.Requests.GetRequest;
+import xyz.garrulous.garrulous.Requests.Get;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -44,9 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
             // Add user to database via webservice.
             // Start Activity and create session
 
-            GetRequest g = new GetRequest();
+            Get g = new Get();
             g.setMethod("GET");
-            g.setUri("http://10.0.2.2/ga/register");
+            g.setUri("http://garrulous.xyz/v1/user");
             g.setParam("first_name", "First Name");
             g.setParam("last_name", "Last Name");
             g.setParam("email","Email");

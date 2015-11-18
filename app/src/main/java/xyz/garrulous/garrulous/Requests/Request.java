@@ -5,12 +5,12 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by michaelpierre on 11/15/15.
- */
-public class GetRequest {
-    private String uri;
-    private String method = "GET";
+public class Request {
+    /*
+    This is the parent class to all requests. The URI is set here along with the basis for
+    HTTP REST calls.
+     */
+    private String uri = "http://garrulous.xyz/";
     private Map<String, String> params = new HashMap<>();
 
     public String getUri() {
@@ -19,14 +19,6 @@ public class GetRequest {
 
     public void setUri(String uri) {
         this.uri = uri;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
     }
 
     public Map<String, String> getParams() {
