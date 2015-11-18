@@ -32,7 +32,7 @@
         android:id="@+id/loginEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText"
+        android:layout_above="@+id/signInEditText"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="@string/text_email"
@@ -40,7 +40,7 @@
         android:textSize="28sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/signInEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -54,7 +54,7 @@
         android:id="@+id/passwordTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/signInEditText"
         android:layout_marginTop="45dp"
         android:gravity="center"
         android:text="@string/text_password"
@@ -71,7 +71,21 @@
         android:layout_below="@+id/passwordTextView"
         android:elegantTextHeight="true"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/garrulousWhite"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="New User?"
+        android:id="@+id/NewUserClickTxt"
+        android:layout_below="@+id/passwordEditText"
+        android:layout_alignLeft="@+id/loginEmailTextView"
+        android:layout_alignStart="@+id/loginEmailTextView"
+        android:clickable="true"
+        android:onClick="NewUserEventHandeler"
+        android:textColor="@color/garrulousWhite"/>
 
     <Button
         android:id="@+id/button"
@@ -85,7 +99,8 @@
         android:background="@color/garrulousOrange"
         android:text="Sign In"
         android:textColor="@color/garrulousWhite"
-        android:textSize="21sp" />
+        android:textSize="21sp"
+        android:onClick="LoginEventHandler"/>
 
 
 </RelativeLayout>
