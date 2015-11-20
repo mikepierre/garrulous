@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             // Add user to database via webservice.
             // Start Activity and create session
-
+/*
             Get g = new Get();
             g.setMethod("GET");
             g.setUri("http://garrulous.xyz/v1/user");
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             RegisterTasks registerTask = new RegisterTasks();
             registerTask.execute(g);
-
+*/
             Intent intent = new Intent(this,GarrulousActivity.class);
             startActivity(intent);
         }

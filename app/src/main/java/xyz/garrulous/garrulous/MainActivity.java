@@ -70,12 +70,13 @@ public class MainActivity extends AppCompatActivity {
             p.setParam("email", "mike@mike.com"); // setting users input
             p.setParam("password", "pass");
             LoginTask loginTask = new LoginTask();
+/*
             try {
                 String Response = loginTask.execute(p).get();
                 LoginParser loginParser = new LoginParser();
 
-                String[] ResponseArray = loginParser.setLoginInfo(Response); // will change after.
-                Log.d("EMAIL", ResponseArray[0]);
+               String[] ResponseArray = loginParser.setLoginInfo(Response); // will change after.
+               Log.d("EMAIL", ResponseArray[0]);
                 Log.d("Password", ResponseArray[1]);
 
             } catch (InterruptedException e) {
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+            */
             intent.putExtra("USER_SESSION", "1234");
             intent.putExtra("USER_EMAIL", email.getText().toString());
             intent.putExtra("FIRST_NAME", "Michael");

@@ -22,6 +22,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        /*
         Get g = new Get();
         g.setMethod("GET");
         g.setUri("http://10.0.2.2/"); // get user by id
@@ -37,7 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
         } catch(Exception e){
             e.printStackTrace();
         }
-
+*/
     }
 
     @Override

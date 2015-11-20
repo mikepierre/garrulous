@@ -23,30 +23,13 @@ public class ViewProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
-
+/*
         Get g = new Get();
         g.setMethod("GET");
         g.setUri("http://10.0.2.2/"); // all users web service
         ViewProfileTask viewProfileTask = new ViewProfileTask();
-        try {
-           String Response = viewProfileTask.execute(g).get();
-          ViewUserParser vw = new ViewUserParser();
+        */
 
-            HashMap hm = ViewUserParser.ViewUserProfile(Response, 0);
-            /*
-            hm.get("uid");
-            hm.get("first_name");
-            hm.get("last_name");
-            hm.get("about_me");
-            hm.get("location");
-            */
-            Log.d("Response from vp ac", String.valueOf(hm));
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
     }
 
 
