@@ -62,7 +62,6 @@ public class RequestActivity extends AppCompatActivity {
         post.setParam("password", "blahblah");
         post.setParam("email", "prince@rich.com");
         postTask postTask = new postTask();
-
         // creating a string to get the requested data from POST.
         try {
            String request_data = postTask.execute(post).get();

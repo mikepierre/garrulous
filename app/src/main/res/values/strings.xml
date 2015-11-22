@@ -21,5 +21,6 @@
     <string name="text_update">Update</string>
     <string name="title_activity_view_profile">ViewProfile</string>
     <string name="title_activity_request">RequestActivity</string>
+    <string name="username">Username</string>
 
 </resources>
