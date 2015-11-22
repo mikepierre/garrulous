@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_email"
+        android:text="@string/text_username"
         android:id="@+id/emailTextView"
         android:textSize="28sp"
         android:textColor="@color/garrulousWhite"
@@ -82,7 +82,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/emailEditText"
+        android:id="@+id/usernameEditText"
         android:layout_below="@+id/emailTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -95,7 +95,7 @@
         android:id="@+id/passwordTextView"
         android:textSize="28sp"
         android:textColor="@color/garrulousWhite"
-        android:layout_below="@+id/emailEditText"
+        android:layout_below="@+id/usernameEditText"
         android:layout_centerHorizontal="true"
         android:gravity="center"/>
 

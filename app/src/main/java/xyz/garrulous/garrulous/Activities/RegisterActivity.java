@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import xyz.garrulous.garrulous.AsyncTasks.RegisterTasks;
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.R;
-import xyz.garrulous.garrulous.Requests.Get;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         // Get user text inputs.
         EditText FirstName = (EditText) findViewById(R.id.firstNameEditTextRegister);
         EditText LastName = (EditText) findViewById(R.id.lastNameEditText);
-        EditText Email = (EditText) findViewById(R.id.emailEditText);
+        EditText Email = (EditText) findViewById(R.id.usernameEditText);
         EditText Password = (EditText) findViewById(R.id.passwordEditText);
 
         if (FirstName.getText().toString().matches("")

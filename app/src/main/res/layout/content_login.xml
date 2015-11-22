@@ -29,10 +29,10 @@
         android:textStyle="bold|italic" />
 
     <TextView
-        android:id="@+id/loginEmailTextView"
+        android:id="@+id/loginUsernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signInEditText"
+        android:layout_above="@+id/usernameEditText"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="@string/text_username"
@@ -40,7 +40,7 @@
         android:textSize="28sp" />
 
     <EditText
-        android:id="@+id/signInEditText"
+        android:id="@+id/usernameEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -54,7 +54,7 @@
         android:id="@+id/passwordTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signInEditText"
+        android:layout_below="@+id/usernameEditText"
         android:layout_marginTop="45dp"
         android:gravity="center"
         android:text="@string/text_password"
@@ -81,8 +81,8 @@
         android:text="New User?"
         android:id="@+id/NewUserClickTxt"
         android:layout_below="@+id/passwordEditText"
-        android:layout_alignLeft="@+id/loginEmailTextView"
-        android:layout_alignStart="@+id/loginEmailTextView"
+        android:layout_alignLeft="@+id/loginUsernameTextView"
+        android:layout_alignStart="@+id/loginUsernameTextView"
         android:clickable="true"
         android:onClick="NewUserEventHandeler"
         android:textColor="@color/garrulousWhite"/>

@@ -5,17 +5,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.concurrent.ExecutionException;
-
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
-import xyz.garrulous.garrulous.Parsers.LoginParser;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
 
@@ -55,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void LoginEventHandler(View view){
-        EditText email = (EditText) findViewById(R.id.signInEditText);
+        EditText email = (EditText) findViewById(R.id.usernameEditText);
         EditText password = (EditText) findViewById(R.id.passwordEditText);
         if(email.getText().toString().matches("") &&
                 password.getText().toString().matches("")){
