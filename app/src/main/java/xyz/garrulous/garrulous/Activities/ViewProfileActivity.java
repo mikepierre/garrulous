@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
+import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.Parsers.ViewUserParser;
 import xyz.garrulous.garrulous.R;
@@ -23,13 +24,12 @@ public class ViewProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
-/*
+       /*
         Get g = new Get();
         g.setMethod("GET");
         g.setUri("http://10.0.2.2/"); // all users web service
         ViewProfileTask viewProfileTask = new ViewProfileTask();
         */
-
     }
 
 
@@ -55,13 +55,17 @@ public class ViewProfileActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
-                startActivity(a);
+
+            case R.id.action_edit_profile:
+                Intent edit_profile = new Intent(this, EditProfileActivity.class);
+                startActivity(edit_profile);
                 break;
 
-            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
-                startActivity(b);
+            case R.id.action_home_screen:
+                Intent home_screen = new Intent(this, GarrulousActivity.class);
+                startActivity(home_screen);
                 break;
+
         }
 
         return super.onOptionsItemSelected(item);

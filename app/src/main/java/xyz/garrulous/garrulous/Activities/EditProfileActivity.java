@@ -18,34 +18,20 @@ import xyz.garrulous.garrulous.Requests.Get;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    // starts the activity for edit profile.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        /*
-        Get g = new Get();
-        g.setMethod("GET");
-        g.setUri("http://10.0.2.2/"); // get user by id
-        g.setParam("id", "1");
-        EditProfileTask editProfileTask = new EditProfileTask();
-        EditProfileParser editProfileParser = new EditProfileParser();
-
-        try{
-            String  Response = editProfileTask.execute(g).get();
-            HashMap hm = EditProfileParser.GetUserById(Response, 1);
-            Log.d("User Info ", String.valueOf(hm));
-
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-*/
     }
 
+    // inflates the menu with the menu activity.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -58,25 +44,25 @@ public class EditProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public boolean ViewSettingsEventHandler(MenuItem item){
+    // adds menu item to the infladed menu.
+    public boolean ViewSettingsEventHandler(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
-            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
-                startActivity(a);
+            case R.id.action_edit_profile:
+                Intent edit_profile = new Intent(this, EditProfileActivity.class);
+                startActivity(edit_profile);
                 break;
 
-            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
-                startActivity(b);
-                break;
-
-            case R.id.action_home_screen: Intent c = new Intent(this, GarrulousActivity.class);
-                startActivity(c);
+            case R.id.action_home_screen:
+                Intent home_screen = new Intent(this, GarrulousActivity.class);
+                startActivity(home_screen);
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     public class EditProfileTask extends AsyncTask<Get, String, String> {
 
@@ -87,7 +73,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
         @Override
-        protected  void onPostExecute(String result) {
+        protected void onPostExecute(String result) {
 
             super.onPostExecute(result);
 

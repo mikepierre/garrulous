@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
+import xyz.garrulous.garrulous.Requests.Put;
 
 public class RequestActivity extends AppCompatActivity {
 
@@ -45,14 +46,13 @@ public class RequestActivity extends AppCompatActivity {
         try {
             // creating a string to get the requested data from GET.
             String request_data = getTask.execute(get).get();
-            Log.d("Data recieved GET:",request_data);
+            Log.d("Data recieved GET:", request_data);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
 
 
         Post post = new Post();
@@ -75,8 +75,8 @@ public class RequestActivity extends AppCompatActivity {
 
     }
 
-    // Set up AyncTask for get
-    private class getTask extends AsyncTask<Get, String, String>{
+    //
+    private class getTask extends AsyncTask<Get, String, String> {
         // We are executing getData method from httpManager
         @Override
         protected String doInBackground(Get... params) {
@@ -85,7 +85,7 @@ public class RequestActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
             // we see the http response
             Log.d("Results GET", result);
@@ -93,7 +93,8 @@ public class RequestActivity extends AppCompatActivity {
 
     }
 
-    private class postTask extends AsyncTask<Post, String, String>{
+    // post is to insert
+    private class postTask extends AsyncTask<Post, String, String> {
         @Override
         protected String doInBackground(Post... params) {
             String content = HttpManager.postData(params[0]);
@@ -101,13 +102,19 @@ public class RequestActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
             // we see the http response
             Log.d("Results POST", result);
         }
     }
 
-
+    // put is to update
+    private class putTask extends AsyncTask<Put, String, String> {
+        @Override
+        protected String doInBackground(Put... puts) {
+            return null;
+        }
+    }
 
 }
