@@ -40,13 +40,14 @@ public class Post extends Request {
 
 
     /*
-    * jsonPOST
+    * JsonPOST
+    *
     * Creates JSON array to include within the body of POST request.
     *
     * @return JSON array.
     * */
 
-    public String jsonPOST() throws JSONException {
+    public String JsonPOST() throws JSONException {
         JSONObject JSONobj = new JSONObject();
         JSONArray JSONArray = new JSONArray();
         for (String key: params.keySet()){

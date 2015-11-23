@@ -13,8 +13,8 @@ public class Put extends Request {
     private String urn;
     private Map<String, String> params = new HashMap<>();
 
-    private String getUri() {
-        return this.getURL() + this.getUri();
+    public String getUri() {
+        return this.getURL() + this.getUrn();
     }
 
     public String getUrn() {
@@ -35,10 +35,12 @@ public class Put extends Request {
 
     /*
     * jsonPUT
+    *
     * creates jSON array to include within the body of PUT request.
+    *
     * @return json array.
     * */
-    public String jsonPUT() throws JSONException {
+    public String JsonPUT() throws JSONException {
         JSONObject JSONobj = new JSONObject();
         JSONArray JSONArray = new JSONArray();
         for (String key : params.keySet()) {

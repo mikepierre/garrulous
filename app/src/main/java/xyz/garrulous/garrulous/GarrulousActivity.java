@@ -26,7 +26,7 @@ import xyz.garrulous.garrulous.Requests.Get;
 public class GarrulousActivity extends AppCompatActivity {
 
     List<Users> usersList;
-    List<UserListTask> userListTasks;
+    //List<UserListTask> userListTasks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,8 @@ public class GarrulousActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //need to adjust this.
         setSupportActionBar(toolbar);
         Log.d("New Activity Garrulous", "Started");
-        userListTasks = new ArrayList<>();
-        requestData();
+        //userListTasks = new ArrayList<>();
+        //requestData();
     }
 
     @Override
@@ -58,22 +58,21 @@ public class GarrulousActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_view_profile: Intent a = new Intent(this, ViewProfileActivity.class);
-                startActivity(a);
+            case R.id.action_edit_profile:
+                Intent edit_profile = new Intent(this, EditProfileActivity.class);
+                startActivity(edit_profile);
                 break;
 
-            case R.id.action_edit_profile: Intent b = new Intent(this,EditProfileActivity.class);
-                startActivity(b);
-                break;
-
-            case R.id.action_home_screen: Intent c = new Intent(this,GarrulousActivity.class);
-                startActivity(c);
+            case R.id.action_home_screen:
+                Intent home_screen = new Intent(this, GarrulousActivity.class);
+                startActivity(home_screen);
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     private void requestData(){
         UserListTask userListTask = new UserListTask();
         Get g = new Get();
@@ -99,7 +98,10 @@ public class GarrulousActivity extends AppCompatActivity {
         });
 
     }
+    */
 
+    // user list task is gets the list of users to put into list view.
+    /*
 
     private class UserListTask extends AsyncTask<Get, String, String>{
         @Override
@@ -120,4 +122,5 @@ public class GarrulousActivity extends AppCompatActivity {
         }
 
     }
+    */
 }
