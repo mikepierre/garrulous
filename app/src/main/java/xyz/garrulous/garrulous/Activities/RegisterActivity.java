@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.Parsers.UserParser;
@@ -42,7 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
         EditText last_name = (EditText) findViewById(R.id.lastNameEditText);
         EditText user_name = (EditText) findViewById(R.id.usernameEditText);
         EditText password = (EditText) findViewById(R.id.passwordEditText);
-
+        String FirstName = first_name.getText().toString();
+        String LastName = last_name.getText().toString();
+        String Username = user_name.getText().toString();
+        String Password = password.getText().toString();
 
 
         if (first_name.getText().toString().matches("")
@@ -55,32 +60,52 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             // get the 200 code from the post request when registering user.
             // if code is equal to 200 then we need to call the get request to
-            // retreive the token than we start the Garrulous intent.
+            // retrieve the token than we start the Garrulous intent.
 
+
+            // logging text to make sure that we are getting all fields that the user inserted.
+            Log.d("Text: ", "First Name" + FirstName + " Last Name " + LastName +
+                    " username " + Username + " password " + Password);
+
+            // Calling post class.
             Post post = new Post();
 
+            // establishing the URN to create the REST endpoint URI.
             post.setUrn("v1/user");
-            post.setParam("first_name", first_name);
-            post.setParam("last_name", "");
-            post.setParam("user_name", "");
-            post.setParam("password","");
 
+            // Setting parameters to POST to the body of the REST SERVICE.
+            post.setParam("first_name", FirstName);
+            post.setParam("last_name", LastName);
+            post.setParam("user_name", Username);
+            post.setParam("password", Password);
 
+            // Calling register task in order to get the Async Methods to register user.
+            registerTask registerTask = new registerTask();
 
+            // Executing Async Thread to POST to Web service.
+            try {
+                // We can create a parse to check if response is true.
+                // before we log user in.
+                String response = registerTask.execute(post).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
 
-            // Add user to database via webservice.
-            // Start Activity and create session
-            Intent intent = new Intent(this, GarrulousActivity.class);
-            startActivity(intent);
+            // start intent to Garrulous Main.
+            //Intent intent = new Intent(this, GarrulousActivity.class);
+            //startActivity(intent);
         }
 
     }
 
-    private class registerTask extends AsyncTask<Post, String, String >{
+
+    private class registerTask extends AsyncTask<Post, String, String> {
 
         // once user clicks register the progress bar will show
         @Override
-        protected void onPreExecute(){
+        protected void onPreExecute() {
             pb.setVisibility(View.VISIBLE);
         }
 
@@ -101,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private class loginTask extends AsyncTask<Get, String, String>{
+    private class loginTask extends AsyncTask<Get, String, String> {
 
         @Override
         protected String doInBackground(Get... gets) {
