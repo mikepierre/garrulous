@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void NewUserEventHandeler(View view){
+    public void NewUserEventHandler(View view){
         Intent intent = new Intent(this,RegisterActivity.class);
         startActivity(intent);
     }

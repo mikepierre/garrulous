@@ -84,7 +84,7 @@
         android:layout_alignLeft="@+id/loginUsernameTextView"
         android:layout_alignStart="@+id/loginUsernameTextView"
         android:clickable="true"
-        android:onClick="NewUserEventHandeler"
+        android:onClick="NewUserEventHandler"
         android:textColor="@color/garrulousWhite"/>
 
     <Button
