@@ -103,12 +103,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private class registerTask extends AsyncTask<Post, String, String> {
 
-        // once user clicks register the progress bar will show
-        @Override
-        protected void onPreExecute() {
-            pb.setVisibility(View.VISIBLE);
-        }
-
         // loads content in the background using POST.
         @Override
         protected String doInBackground(Post... params) {
@@ -119,7 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
         // once register we log result, and setting progress bar to invincible.
         @Override
         protected void onPostExecute(String result) {
-            pb.setVisibility(View.INVISIBLE);
             Log.d("Results", result);
 
         }
