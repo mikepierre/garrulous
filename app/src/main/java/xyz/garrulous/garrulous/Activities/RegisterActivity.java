@@ -70,8 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
             Log.d("Text: ", "First Name" + FirstName + " Last Name " + LastName +
                     " username " + Username + " password " + Password);
 
-            // Calling post class.
+            // Calling post.
             Post post = new Post();
+            // Calling get.
+            Get get = new Get();
 
             // establishing the URN to create the REST endpoint URI.
             post.setUrn("v1/user");
@@ -94,8 +96,21 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // LOGIN PARSER RIGHT HERE.
                 LoginParser lparser = new LoginParser();
-                Token token = lparser.setLoginInfo(response);
 
+
+                // http://127.0.0.1:8080/v1/auth/mike/password
+                get.setUrn("v1/auth");
+                get.setParam("username", Username);
+                get.setParam("password", Password);
+                loginTask LoginTask = new loginTask();
+                String loginTaskResponse = LoginTask.execute(get).get();
+                Log.d("Token Response: ", loginTaskResponse);
+
+                Token token = lparser.setLoginInfo(loginTaskResponse);
+                Log.d("Parsed Token",token.getToken());
+
+                /*
+                Token token = lparser.setLoginInfo(response);
 
                 if(token.getToken() != "") {
                     //lets check to see if the token esixts.
@@ -103,8 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     Log.e("Token", "Could not retrieve token from preferences");
                 }
-
-
+                */
 
 
             } catch (InterruptedException e) {

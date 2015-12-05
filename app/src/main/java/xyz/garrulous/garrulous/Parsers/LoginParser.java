@@ -1,5 +1,7 @@
 package xyz.garrulous.garrulous.Parsers;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import xyz.garrulous.garrulous.Model.Token;
@@ -15,6 +17,7 @@ public class LoginParser {
             Token t = new Token();
 
             JSONObject obj = new JSONObject(server_returned);
+            Log.d("setLoginInfo:",server_returned);
             t.setToken(obj.getString("token"));
             t.setError(obj.getBoolean("error"));
             t.setMessage(obj.getString("msg"));
