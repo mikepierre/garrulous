@@ -27,7 +27,6 @@ import xyz.garrulous.garrulous.Requests.Post;
 public class RegisterActivity extends AppCompatActivity {
 
     int duration = Toast.LENGTH_SHORT;
-    String first_name, last_name, user_name, password;
 
     ProgressBar pb;
 
@@ -98,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                 // LOGIN PARSER RIGHT HERE.
                 LoginParser lparser = new LoginParser();
 
-                // http://127.0.0.1:8080/v1/auth/mike/password
+
                 get.setUrn("v1/auth");
                 get.setParam("username", Username);
                 get.setParam("password", Password);
@@ -107,20 +106,18 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("Token Response: ", loginTaskResponse);
 
 
-
-                /*
                 Token token = lparser.setLoginInfo(loginTaskResponse);
                 Log.d("Parsed Token",token.getToken());
-
-                Token token = lparser.setLoginInfo(response);
+                Log.d("Logged Act Tok.", token.getToken());
 
                 if(token.getToken() != "") {
                     //lets check to see if the token esixts.
-                    loginTask LoginTask = new loginTask();
+                    Intent intent = new Intent(this, GarrulousActivity.class);
+                    startActivity(intent);
                 } else {
                     Log.e("Token", "Could not retrieve token from preferences");
                 }
-                */
+
 
 
             } catch (InterruptedException e) {
