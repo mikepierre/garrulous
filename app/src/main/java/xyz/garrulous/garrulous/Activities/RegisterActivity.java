@@ -90,6 +90,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String response = registerTask.execute(post).get();
                 Log.d("JSON: ", response);
 
+                // LOGIN PARSER RIGHT HERE.
+
                 //lets check to see if the token esixts.
                 loginTask LoginTask = new loginTask();
 
@@ -116,11 +118,11 @@ public class RegisterActivity extends AppCompatActivity {
         protected String doInBackground(Post... params) {
             HashMap content = HttpManager.postData(params[0]);
 
-            // user password information is incorrect.
+            // check if any invalid details
             if(content.get("code").equals("403")){
-                return "{ \"error\": username or password not valid.}";
+                return "{ \"error\": Invalid details}";
             } else {
-                // user name and password is correct than post json message.
+                //  post json message.
                 return String.valueOf(content.get("body"));
             }
         }
@@ -134,7 +136,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-
     // We are retriving the users token
     // and if error - true display atoast message.
     private class loginTask extends AsyncTask<Get, String, String> {
@@ -142,7 +143,13 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Get... params) {
             HashMap content = HttpManager.getData(params[0]);
-            return String.valueOf(content);
+            // user password information is incorrect.
+            if(content.get("code").equals("403")){
+                return "{ \"error\": username or password not valid.}";
+            } else {
+                // user name and password is correct than post GET message.
+                return String.valueOf(content.get("body"));
+            }
         }
 
         @Override
