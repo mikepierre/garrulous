@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // when user submit information to login this is the method that is checked in order for them
+    // to goto there main account.
     public void LoginEventHandler(View view){
-        EditText email = (EditText) findViewById(R.id.usernameEditText);
+        EditText username = (EditText) findViewById(R.id.usernameEditText);
         EditText password = (EditText) findViewById(R.id.passwordEditText);
-        if(email.getText().toString().matches("") &&
+        if(username.getText().toString().matches("") &&
                 password.getText().toString().matches("")){
             Toast toast = Toast.makeText(getApplicationContext(), "Missing Info",
                     duration);
@@ -63,30 +66,18 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             Intent intent = new Intent(this,GarrulousActivity.class);
+            // user name and password to send to API.
+            Log.d("username :", username.getText().toString());
+            Log.d("password :", password.getText().toString());
+            /*
             // This should be POST
             Post p = new Post();
             p.setParam("email", "mike@mike.com"); // setting users input
             p.setParam("password", "pass");
             LoginTask loginTask = new LoginTask();
-/*
-            try {
-                String Response = loginTask.execute(p).get();
-                LoginParser loginParser = new LoginParser();
-
-               String[] ResponseArray = loginParser.setLoginInfo(Response); // will change after.
-               Log.d("EMAIL", ResponseArray[0]);
-                Log.d("Password", ResponseArray[1]);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            */
             intent.putExtra("USER_SESSION", "1234");
-            intent.putExtra("USER_EMAIL", email.getText().toString());
-            intent.putExtra("FIRST_NAME", "Michael");
             startActivity(intent);
+            */
         }
     }
 
@@ -95,19 +86,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public class LoginTask extends AsyncTask<Get, String, String>{
+    // We are retriving the users token
+    // and if error - true display a toast message.
+    private class loginTask extends AsyncTask<Get, String, String> {
 
         @Override
         protected String doInBackground(Get... params) {
             HashMap content = HttpManager.getData(params[0]);
-            return String.valueOf(content);
+            // user password information is incorrect.
+            if(content.get("code").equals("403")){
+                return "{ \"error\": username or password not valid.}";
+            } else {
+                // user name and password is correct than post GET message.
+                return String.valueOf(content.get("body"));
+            }
         }
 
         @Override
-        protected  void onPostExecute(String result) {
-
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
+            // we see the http response
+            Log.d("Results GET", result);
         }
     }
 
