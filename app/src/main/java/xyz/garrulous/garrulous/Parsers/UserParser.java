@@ -9,9 +9,7 @@ import java.util.List;
 
 import xyz.garrulous.garrulous.Model.Users;
 
-/**
- * Created by michaelpierre on 11/16/15.
- */
+
 public class UserParser {
     public static List<Users> parseUsers(String content){
         try{

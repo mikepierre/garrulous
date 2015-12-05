@@ -75,8 +75,8 @@ public class ViewProfileActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Get... params) {
-            String content = HttpManager.getData(params[0]);
-            return content;
+            HashMap content = HttpManager.getData(params[0]);
+            return String.valueOf(content);
         }
 
         @Override

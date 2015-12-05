@@ -20,6 +20,7 @@ public class LoginParser {
             JSONArray json = new JSONArray(content);
             JSONObject obj = json.getJSONObject(0);
             Users users = new Users();
+            /*
             users.setEmail(obj.getString("email"));
             String UserEmail = users.getEmail();
             users.setPassword(obj.getString("password"));
@@ -28,7 +29,9 @@ public class LoginParser {
             String UserAutenticationArray[] = {UserEmail,UserPassword};
 
             return UserAutenticationArray;
+            */
 
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
