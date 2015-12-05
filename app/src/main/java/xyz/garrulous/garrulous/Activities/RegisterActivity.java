@@ -88,9 +88,12 @@ public class RegisterActivity extends AppCompatActivity {
                 // We can create a parse to check if response is true.
                 // before we log user in.
                 String response = registerTask.execute(post).get();
+                Log.d("JSON: ", response);
 
                 //lets check to see if the token esixts.
                 loginTask LoginTask = new loginTask();
+
+
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -113,7 +116,13 @@ public class RegisterActivity extends AppCompatActivity {
         protected String doInBackground(Post... params) {
             HashMap content = HttpManager.postData(params[0]);
 
-            return String.valueOf(content);
+            // user password information is incorrect.
+            if(content.get("code").equals("403")){
+                return "{ \"error\": username or password not valid.}";
+            } else {
+                // user name and password is correct than post json message.
+                return String.valueOf(content.get("body"));
+            }
         }
 
         // once register we log result, and setting progress bar to invincible.
