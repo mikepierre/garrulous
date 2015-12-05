@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
+import xyz.garrulous.garrulous.Model.PrefSingleton;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        PrefSingleton.getInstance().Initialize(getApplicationContext());
         //setSupportActionBar(toolbar); //comment this out for time being.
     }
 

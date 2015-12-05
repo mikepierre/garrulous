@@ -19,13 +19,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="Helvetica"
         android:gravity="center"
         android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/garrulousWhite"
         android:textSize="42sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/MottoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/GarrulousTextView"
+        android:fontFamily="Helvetica"
+        android:gravity="center"
+        android:text="@string/app_motto"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/garrulousWhite"
+        android:textSize="20sp"
         android:textStyle="bold|italic" />
 
     <TextView
@@ -55,7 +70,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameEditText"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/text_password"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -91,24 +106,21 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_alignRight="@+id/GarrulousTextView"
-        android:layout_alignEnd="@+id/GarrulousTextView"
         android:layout_below="@+id/passwordEditText">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="New User?"
+            android:text="Register Now!"
             android:id="@+id/NewUserClickTxt"
             android:layout_below="@+id/passwordEditText"
-            android:layout_alignLeft="@+id/loginUsernameTextView"
-            android:layout_alignStart="@+id/loginUsernameTextView"
             android:clickable="true"
             android:onClick="NewUserEventHandler"
-            android:textColor="@color/garrulousWhite"/>
+            android:textColor="@color/garrulousWhite"
+            android:layout_gravity="right" />
     </LinearLayout>
 
 
