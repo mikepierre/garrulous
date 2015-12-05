@@ -1,28 +1,25 @@
 package xyz.garrulous.garrulous.Model;
 
-
-import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * Created by Richard Meyers on 12/5/2015.
  */
 public class Token {
 
-    SharedPreferences sharedpreferences;
     private String message = "";
     private Boolean error  = false;
 
     public String getSharedToken() {
-        String token = sharedpreferences.getString("auth_token", "");
+        String token = PrefSingleton.getInstance().getPreference("auth_token");
+        Log.d("Returning Token: ", token);
         return token;
     }
 
     public void setSharedToken(String auth_token) {
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("auth_token", auth_token);
-        editor.commit();
+        PrefSingleton.getInstance().writePreference("auth_token", auth_token);
+        Log.d("Setting Token:", auth_token);
     }
-
 
     public String getMessage() {
         return message;
