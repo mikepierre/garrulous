@@ -106,10 +106,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String loginTaskResponse = LoginTask.execute(get).get();
                 Log.d("Token Response: ", loginTaskResponse);
 
+                /*
                 Token token = lparser.setLoginInfo(loginTaskResponse);
                 Log.d("Parsed Token",token.getToken());
 
-                /*
                 Token token = lparser.setLoginInfo(response);
 
                 if(token.getToken() != "") {

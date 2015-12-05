@@ -17,6 +17,8 @@ public class LoginParser {
             Token t = new Token();
 
             JSONObject obj = new JSONObject(server_returned);
+
+            Log.d("Parsed Token",obj.getString("token"));
             Log.d("setLoginInfo:",server_returned);
             t.setToken(obj.getString("token"));
             t.setError(obj.getBoolean("error"));
