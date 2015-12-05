@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Activity", "Started Redister Activity");
+        Log.d("Activity", "Started Register Activity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
     }
@@ -67,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
             // if code is equal to 200 then we need to call the get request to
             // retrieve the token than we start the Garrulous intent.
 
-
             // logging text to make sure that we are getting all fields that the user inserted.
             Log.d("Text: ", "First Name" + FirstName + " Last Name " + LastName +
                     " username " + Username + " password " + Password);
@@ -98,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // LOGIN PARSER RIGHT HERE.
                 LoginParser lparser = new LoginParser();
-
 
                 // http://127.0.0.1:8080/v1/auth/mike/password
                 get.setUrn("v1/auth");
@@ -155,7 +153,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-        // once register we log result, and setting progress bar to invincible.
+        // once registered we log result, and setting progress bar to invincible.
         @Override
         protected void onPostExecute(String result) {
             Log.d("Results", result);
@@ -164,8 +162,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    // We are retriving the users token
-    // and if error - true display atoast message.
+    // We are retrieving the users token
+    // and if error - true display a toast message.
     private class loginTask extends AsyncTask<Get, String, String> {
 
         @Override
