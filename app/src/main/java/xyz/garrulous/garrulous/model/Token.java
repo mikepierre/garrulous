@@ -1,4 +1,4 @@
-package xyz.garrulous.garrulous.model;
+package xyz.garrulous.garrulous.Model;
 
 
 import android.content.SharedPreferences;
