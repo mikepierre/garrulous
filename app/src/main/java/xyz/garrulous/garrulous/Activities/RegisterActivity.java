@@ -15,6 +15,8 @@ import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.HttpManager;
+import xyz.garrulous.garrulous.Model.Token;
+import xyz.garrulous.garrulous.Parsers.LoginParser;
 import xyz.garrulous.garrulous.Parsers.UserParser;
 import xyz.garrulous.garrulous.R;
 import xyz.garrulous.garrulous.Requests.Get;
@@ -91,9 +93,17 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("JSON: ", response);
 
                 // LOGIN PARSER RIGHT HERE.
+                LoginParser lparser = new LoginParser();
+                Token token = lparser.setLoginInfo(response);
 
-                //lets check to see if the token esixts.
-                loginTask LoginTask = new loginTask();
+
+                if(token.getToken() != "") {
+                    //lets check to see if the token esixts.
+                    loginTask LoginTask = new loginTask();
+                } else {
+                    Log.e("Token", "Could not retrieve token from preferences");
+                }
+
 
 
 
