@@ -12,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
 
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
@@ -23,7 +24,7 @@ public class HttpManager {
      String HTTP_STATUS;
 
     // Request via HTTP GET from the server.
-    public static String getData(Get g){
+    public static HashMap getData(Get g){
         BufferedReader reader = null;
         String uri = g.getUri();
         uri += "?" + g.getEncodedParams();
@@ -41,7 +42,12 @@ public class HttpManager {
                 sb.append(line + "\n");
             }
 
-            return sb.toString();
+            int responseCode = con.getResponseCode();
+
+            HashMap server_returned = new HashMap();
+            server_returned.put("code", String.valueOf(responseCode));
+            server_returned.put("body", sb.toString());
+            return server_returned;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -53,7 +59,7 @@ public class HttpManager {
 
     // Request via HTTP POST to the server.
 
-    public static String postData(Post p){
+    public static HashMap postData(Post p){
         String uri = p.getUri();
         BufferedReader reader = null;
 
@@ -85,7 +91,11 @@ public class HttpManager {
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
-            return sb.toString();
+
+            HashMap server_returned = new HashMap();
+            server_returned.put("code", String.valueOf(responseCode));
+            server_returned.put("body", sb.toString());
+            return server_returned;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -98,7 +108,7 @@ public class HttpManager {
 
     // Request via HTTP PUT from the server.
 
-    public static String putData(Put p)
+    public static HashMap putData(Put p)
     {
         String uri = p.getUri();
         BufferedReader reader = null;
@@ -130,7 +140,10 @@ public class HttpManager {
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
-            return sb.toString();
+            HashMap server_returned = new HashMap();
+            server_returned.put("code", String.valueOf(responseCode));
+            server_returned.put("body", sb.toString());
+            return server_returned;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
