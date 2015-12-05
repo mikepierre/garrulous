@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.Requests.Get;
@@ -80,8 +81,8 @@ public class RequestActivity extends AppCompatActivity {
         // We are executing getData method from httpManager
         @Override
         protected String doInBackground(Get... params) {
-            String content = HttpManager.getData(params[0]);
-            return content;
+            HashMap content = HttpManager.getData(params[0]);
+            return String.valueOf(content);
         }
 
         @Override
@@ -97,8 +98,8 @@ public class RequestActivity extends AppCompatActivity {
     private class postTask extends AsyncTask<Post, String, String> {
         @Override
         protected String doInBackground(Post... params) {
-            String content = HttpManager.postData(params[0]);
-            return content;
+            HashMap content = HttpManager.postData(params[0]);
+            return String.valueOf(content);
         }
 
         @Override

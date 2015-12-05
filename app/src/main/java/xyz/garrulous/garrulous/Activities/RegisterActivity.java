@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.GarrulousActivity;
@@ -87,6 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                 // We can create a parse to check if response is true.
                 // before we log user in.
                 String response = registerTask.execute(post).get();
+
+                //lets check to see if the token esixts.
+                loginTask LoginTask = new loginTask();
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -106,8 +111,9 @@ public class RegisterActivity extends AppCompatActivity {
         // loads content in the background using POST.
         @Override
         protected String doInBackground(Post... params) {
-            String content = HttpManager.postData(params[0]);
-            return content;
+            HashMap content = HttpManager.postData(params[0]);
+
+            return String.valueOf(content);
         }
 
         // once register we log result, and setting progress bar to invincible.
@@ -119,11 +125,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+
+    // We are retriving the users token
+    // and if error - true display atoast message.
     private class loginTask extends AsyncTask<Get, String, String> {
 
         @Override
-        protected String doInBackground(Get... gets) {
-            return null;
+        protected String doInBackground(Get... params) {
+            HashMap content = HttpManager.getData(params[0]);
+            return String.valueOf(content);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            // we see the http response
+            Log.d("Results GET", result);
         }
     }
 }

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
@@ -97,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Get... params) {
-            String content = HttpManager.getData(params[0]);
-            return content;
+            HashMap content = HttpManager.getData(params[0]);
+            return String.valueOf(content);
         }
 
         @Override

@@ -74,19 +74,6 @@
         android:inputType="textPassword"
         android:textColor="@color/garrulousWhite"/>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="New User?"
-        android:id="@+id/NewUserClickTxt"
-        android:layout_below="@+id/passwordEditText"
-        android:layout_alignLeft="@+id/loginUsernameTextView"
-        android:layout_alignStart="@+id/loginUsernameTextView"
-        android:clickable="true"
-        android:onClick="NewUserEventHandler"
-        android:textColor="@color/garrulousWhite"/>
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -101,6 +88,28 @@
         android:textColor="@color/garrulousWhite"
         android:textSize="21sp"
         android:onClick="LoginEventHandler"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignRight="@+id/GarrulousTextView"
+        android:layout_alignEnd="@+id/GarrulousTextView"
+        android:layout_below="@+id/passwordEditText">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="New User?"
+            android:id="@+id/NewUserClickTxt"
+            android:layout_below="@+id/passwordEditText"
+            android:layout_alignLeft="@+id/loginUsernameTextView"
+            android:layout_alignStart="@+id/loginUsernameTextView"
+            android:clickable="true"
+            android:onClick="NewUserEventHandler"
+            android:textColor="@color/garrulousWhite"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
