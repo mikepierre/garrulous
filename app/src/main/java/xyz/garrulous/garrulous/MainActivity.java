@@ -13,10 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Model.PrefSingleton;
 import xyz.garrulous.garrulous.Model.Token;
+import xyz.garrulous.garrulous.Parsers.LoginParser;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
 
@@ -76,19 +78,31 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
 
         } else {
-            Intent intent = new Intent(this,GarrulousActivity.class);
-            // user name and password to send to API.
-            Log.d("username :", username.getText().toString());
-            Log.d("password :", password.getText().toString());
-            /*
-            // This should be POST
-            Post p = new Post();
-            p.setParam("email", "mike@mike.com"); // setting users input
-            p.setParam("password", "pass");
-            LoginTask loginTask = new LoginTask();
-            intent.putExtra("USER_SESSION", "1234");
-            startActivity(intent);
-            */
+            try {
+                Intent intent = new Intent(this,GarrulousActivity.class);
+                // user name and password to send to API.
+                Log.d("username :", username.getText().toString());
+                Log.d("password :", password.getText().toString());
+
+                LoginParser lparser = new LoginParser();
+
+                Get get = new Get();
+                get.setUrn("v1/auth");
+                get.setParam("username", username.getText().toString());
+                get.setParam("password", password.getText().toString());
+                loginTask loginTaskObj = new loginTask();
+                String loginTaskResponse = loginTaskObj.execute(get).get();
+                Log.d("Token Response: ", loginTaskResponse);
+
+
+                Token token = lparser.setLoginInfo(loginTaskResponse);
+                startActivity(intent);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -105,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Get... params) {
             HashMap content = HttpManager.getData(params[0]);
             // user password information is incorrect.
-            if(content.get("code").equals("403")){
+            if (content.get("code").equals("403")) {
                 return "{ \"error\": username or password not valid.}";
             } else {
                 // user name and password is correct than post GET message.
