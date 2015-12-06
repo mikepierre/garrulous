@@ -20,9 +20,7 @@ import xyz.garrulous.garrulous.Requests.Put;
 
 
 public class HttpManager {
-
-     String HTTP_STATUS;
-
+    
     // Request via HTTP GET from the server.
     public static HashMap getData(Get g){
         BufferedReader reader = null;
@@ -153,8 +151,5 @@ public class HttpManager {
         return null;
 
     }
-    // Get http status for POST, GET, PUT, DELETE.
-    public void getHTTPStatus(){
 
-    }
 }

@@ -107,17 +107,16 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 Token token = lparser.setLoginInfo(loginTaskResponse);
-                Log.d("Parsed Token",token.getToken());
+                Log.d("Parsed Token", token.getToken());
                 Log.d("Logged Act Tok.", token.getToken());
 
-                if(token.getToken() != "") {
+                if (token.getToken() != "") {
                     //lets check to see if the token esixts.
                     Intent intent = new Intent(this, GarrulousActivity.class);
                     startActivity(intent);
                 } else {
                     Log.e("Token", "Could not retrieve token from preferences");
                 }
-
 
 
             } catch (InterruptedException e) {
@@ -142,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
             HashMap content = HttpManager.postData(params[0]);
 
             // check if any invalid details
-            if(content.get("code").equals("403")){
+            if (content.get("code").equals("403")) {
                 return "{ \"error\": Invalid details}";
             } else {
                 //  post json message.
@@ -167,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
         protected String doInBackground(Get... params) {
             HashMap content = HttpManager.getData(params[0]);
             // user password information is incorrect.
-            if(content.get("code").equals("403")){
+            if (content.get("code").equals("403")) {
                 return "{ \"error\": username or password not valid.}";
             } else {
                 // user name and password is correct than post GET message.

@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xyz.garrulous.garrulous.Model.Messages;
-import xyz.garrulous.garrulous.Model.Users;
 
 /**
  * Created by michaelpierre on 12/5/15.
  */
-public class ThreatListParser {
+public class ThreadListParser {
 
     public static List<Messages> parseMessageThread(String content){
         try{
