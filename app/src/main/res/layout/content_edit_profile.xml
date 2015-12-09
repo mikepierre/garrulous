@@ -9,7 +9,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_edit_profile"
     tools:context="xyz.garrulous.garrulous.EditProfileActivity"
-    android:background="@android:color/holo_blue_light">
+    android:background="@color/backgroundColor">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true">
 
         <ImageView
-            android:layout_width="82dp"
+            android:layout_width="100dp"
             android:layout_height="75dp"
             android:id="@+id/imageView"
             />
@@ -28,10 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/text_first_name"
+            android:text="Profile"
             android:textSize="42dp"
             android:textColor="@color/garrulousWhite"
-            android:id="@+id/firstNameTexViewProfile" />
+            android:id="@+id/firstNameTexViewProfile"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

@@ -45,7 +45,7 @@ public class GarrulousActivity extends AppCompatActivity {
         Token token = new Token();
         Log.d("Token @ GarrulousAct: ", token.getSharedToken());
         messageThreadListTasks = new ArrayList<>();
-        requestData("WzIsIm1pa2UiXQ.38DtcXQh7IlAwKQSltucuSfXE2M");
+        requestData(token.getSharedToken());
     }
 
     @Override
@@ -59,9 +59,9 @@ public class GarrulousActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
     public boolean ViewSettingsEventHandler(MenuItem item){
