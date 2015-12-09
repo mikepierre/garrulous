@@ -39,6 +39,7 @@ public class GarrulousActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garrulous);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //need to adjust this.
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
         setSupportActionBar(toolbar);
         Log.d("New Activity Garrulous", "Started!");
         PrefSingleton.getInstance().Initialize(getApplicationContext());
