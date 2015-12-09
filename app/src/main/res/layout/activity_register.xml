@@ -6,8 +6,6 @@
     android:layout_height="match_parent" android:fitsSystemWindows="true"
     tools:context="xyz.garrulous.garrulous.Activities.RegisterActivity">
 
-
-
     <include layout="@layout/content_register" />
 
 </android.support.design.widget.CoordinatorLayout>

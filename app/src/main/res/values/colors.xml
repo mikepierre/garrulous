@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFCD28</color>
-    <color name="colorPrimaryDark">#FFCD28</color>
-    <color name="colorAccent">#FFCD28</color>
-    <color name="garrulousWhite">#FFFFFF</color>
-    <color name="garrulousOrange">#FFCD28</color>
+    <!-- second to top bar -->
+    <color name="colorPrimary">#349E81</color>
+    <!-- top most bar -->
+    <color name="colorPrimaryDark">#3EBE9B</color>
+    <!-- background color -->
+    <color name="backgroundColor">#556270</color>
+    <!-- dunno -->
+    <color name="colorAccent">#349E81</color>
+    <!-- text color -->
+    <color name="garrulousWhite">#FFFF</color>
+    <!-- button color -->
+    <color name="garrulousOrange">#349E81</color>
 </resources>
+
+    <!-- 4ECDC4 Turqouise -->
+    <!-- FF6B6B Coral -->
+    <!-- FB9F5C Orange -->

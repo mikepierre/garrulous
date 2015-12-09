@@ -5,11 +5,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -41,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, GarrulousActivity.class);
             startActivity(intent);
         }
+
+        // We have to set this text here because we can't underline stuff in the layout.
+        // It has to be done in the code.
+        TextView registerTextView = (TextView) findViewById(R.id.registerTextView);
+        String udata = "Register Now!";
+        SpannableString content = new SpannableString(udata);
+        content.setSpan(new UnderlineSpan(), 0, udata.length(), 0);
+        registerTextView.setText(content);
     }
 
 
