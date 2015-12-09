@@ -13,35 +13,28 @@
     tools:context="xyz.garrulous.garrulous.LoginActivity"
     tools:showIn="@layout/activity_login">
 
+    <ImageView
+        android:id="@+id/mainLogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
         android:id="@+id/GarrulousTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="0dp"
         android:fontFamily="Helvetica"
         android:gravity="center"
         android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/garrulousWhite"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/MottoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/GarrulousTextView"
-        android:fontFamily="Helvetica"
-        android:gravity="center"
-        android:text="@string/app_motto"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/garrulousWhite"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_below="@id/mainLogo"/>
 
     <TextView
         android:id="@+id/loginUsernameTextView"
@@ -52,7 +45,7 @@
         android:gravity="center"
         android:text="@string/text_username"
         android:textColor="@color/garrulousWhite"
-        android:textSize="28sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/usernameEditText"
@@ -75,7 +68,7 @@
         android:text="@string/text_password"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/garrulousWhite"
-        android:textSize="28sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -124,6 +117,8 @@
             android:textColor="@color/garrulousWhite"
             android:layout_gravity="center" />
     </LinearLayout>
+
+
 
 
 </RelativeLayout>
