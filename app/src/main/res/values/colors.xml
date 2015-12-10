@@ -12,6 +12,7 @@
     <color name="garrulousWhite">#FFFF</color>
     <!-- button color -->
     <color name="garrulousOrange">#349E81</color>
+    <color name="list_item_color">#3EBE9B</color>
 </resources>
 
     <!-- 4ECDC4 Turqouise -->

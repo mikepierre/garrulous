@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
+import xyz.garrulous.garrulous.Activities.MessagesActivity;
 import xyz.garrulous.garrulous.Activities.RegisterActivity;
 import xyz.garrulous.garrulous.Model.PrefSingleton;
 import xyz.garrulous.garrulous.Model.Token;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         String SharedToken = token.getSharedToken();
         if(SharedToken != ""){
             Log.d("If Shared new intent", "Exists!");
-            Intent intent = new Intent(this, GarrulousActivity.class);
+            Intent intent = new Intent(this, MessagesActivity.class);
             startActivity(intent);
         }
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             try {
-                Intent intent = new Intent(this,GarrulousActivity.class);
+                Intent intent = new Intent(this,MessagesActivity.class);
                 // user name and password to send to API.
                 Log.d("username :", username.getText().toString());
                 Log.d("password :", password.getText().toString());
