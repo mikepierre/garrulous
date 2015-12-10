@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,6 +23,7 @@ import java.util.List;
 
 import xyz.garrulous.garrulous.Adapter.MessageThreadAdapter;
 import xyz.garrulous.garrulous.HttpManager;
+import xyz.garrulous.garrulous.MainActivity;
 import xyz.garrulous.garrulous.Model.Messages;
 import xyz.garrulous.garrulous.Model.Token;
 import xyz.garrulous.garrulous.Parsers.ThreadListParser;
@@ -49,8 +49,8 @@ public class MessagesActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MessagesActivity.this, FindUserActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -60,8 +60,8 @@ public class MessagesActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        /*NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);*/
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         Log.d("Messages", "Opened Messages View");
         Token token = new Token();
@@ -95,9 +95,9 @@ public class MessagesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -109,11 +109,15 @@ public class MessagesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-
+            Intent intent = new Intent(this, EditProfileActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_logout) {
-
+            Token t = new Token();
+            t.setToken("");
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

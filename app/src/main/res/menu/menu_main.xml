@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item
+    <!-- <item
         android:id="@+id/action_home_screen"
         android:orderInCategory="100"
         android:title="Messages"
@@ -24,7 +24,7 @@
         android:title="Profile"
         app:showAsAction="never"
         android:onClick="ViewSettingsEventHandler"
-        />
+        />-->
 
 
 

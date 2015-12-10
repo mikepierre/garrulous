@@ -23,17 +23,17 @@
         <activity
             android:name=".GarrulousActivity"
             android:label="@string/title_activity_garrulous"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Activities.ViewProfileActivity"></activity>
-        <activity android:name=".Activities.EditProfileActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.ViewProfileActivity" />
+        <activity android:name=".Activities.EditProfileActivity" />
         <activity
             android:name=".RequestActivity"
             android:label="@string/title_activity_request"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.MessagesActivity"
             android:label="@string/title_activity_messages"
@@ -43,6 +43,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="xyz.garrulous.garrulous.MainActivity" />
         </activity>
+        <activity
+            android:name=".Activities.FindUserActivity"
+            android:label="@string/title_activity_find_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

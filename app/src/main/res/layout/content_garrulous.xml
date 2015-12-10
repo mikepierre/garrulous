@@ -10,62 +10,18 @@
     tools:context="xyz.garrulous.garrulous.Activities.MessagesActivityActivity"
     tools:showIn="@layout/activity_messages">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:id="@+id/searchArea"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:id="@+id/searchTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/title_search"
-            android:textColor="@color/garrulousWhite"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="196dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="0.42" />
-
-        <Button
-            android:id="@+id/goButton"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@color/garrulousOrange"
-            android:text="@string/text_go"
-            android:textColor="@color/garrulousWhite"
-            />
-
-    </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/searchArea"
-        android:layout_marginTop="5dp">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="55dp">
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:padding="10dp"
+            android:padding="15dp"
             style="@style/ListView"
             />
 

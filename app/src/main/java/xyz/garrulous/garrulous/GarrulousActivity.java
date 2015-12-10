@@ -69,7 +69,7 @@ public class GarrulousActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_edit_profile:
+            /*case R.id.action_edit_profile:
                 Intent edit_profile = new Intent(this, EditProfileActivity.class);
                 startActivity(edit_profile);
                 break;
@@ -77,7 +77,7 @@ public class GarrulousActivity extends AppCompatActivity {
             case R.id.action_home_screen:
                 Intent home_screen = new Intent(this, GarrulousActivity.class);
                 startActivity(home_screen);
-                break;
+                break;*/
         }
 
         return super.onOptionsItemSelected(item);
