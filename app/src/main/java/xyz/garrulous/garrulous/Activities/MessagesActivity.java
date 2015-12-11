@@ -136,10 +136,11 @@ public class MessagesActivity extends AppCompatActivity
         messageThreadListTask.execute(g);
     }
 
-    protected void updateDisplay(){
+    protected void updateDisplay(final String result){
         MessageThreadAdapter messageThreadAdapter = new MessageThreadAdapter(this, R.layout.thread_list, MessageList);
         final ListView messageList = (ListView)findViewById(R.id.listView);
         messageList.setAdapter(messageThreadAdapter);
+
 
         messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -148,6 +149,9 @@ public class MessagesActivity extends AppCompatActivity
                 TextView v = (TextView)findViewById(R.id.hiddenUidTextView);
                 //Toast toast = Toast.makeText(getApplicationContext(), v.getText().toString(), Toast.LENGTH_SHORT);
                 //toast.show();
+                Log.d("Get Json Data ", result);
+                Log.d("Log ", String.valueOf(i));
+                // we get the user id using the poision from the JSON array.
                 intent.putExtra("uid",v.getText().toString());
                 startActivity(intent);
             }
@@ -177,7 +181,7 @@ public class MessagesActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(String result){
             MessageList = ThreadListParser.parseMessageThread(result);
-            updateDisplay();
+            updateDisplay(result);
             Log.d("Results", result);
         }
     }
