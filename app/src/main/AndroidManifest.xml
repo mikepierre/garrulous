@@ -50,7 +50,8 @@
             android:name=".Activities.FindUserActivity"
             android:label="@string/title_activity_find_user"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.MessageThreadActivity"></activity>
+        <activity android:name=".Activities.MessageThreadActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
