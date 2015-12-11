@@ -11,55 +11,51 @@
     tools:showIn="@layout/activity_find_user"
     android:background="@color/backgroundColor" >
     <RelativeLayout
-        android:layout_width = "fill_parent"
-        android:layout_height = "fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_centerHorizontal="false"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:id="@+id/searchArea">
-        <RelativeLayout
+
+        <TextView
+            android:id="@+id/searchTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_centerHorizontal="false"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp">
+            android:text="@string/title_search"
+            android:textColor="@color/garrulousWhite"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-            <TextView
-                android:id="@+id/searchTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_search"
-                android:textColor="@color/garrulousWhite"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="20dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/searchTextView"
+            android:layout_toLeftOf="@+id/goButton"
+            android:singleLine="true"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:layout_weight="1" />
 
-            <EditText
-                android:id="@+id/searchEditText"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@id/searchTextView"
-                android:layout_toLeftOf="@+id/goButton"
-                android:singleLine="true"
-                android:lines="1"
-                android:scrollHorizontally="true"
-                android:ellipsize="end"
-                android:layout_weight="1" />
+        <Button
+            android:id="@+id/goButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/garrulousOrange"
+            android:text="@string/text_go"
+            android:textColor="@color/garrulousWhite"
+            android:layout_alignParentRight = "true"
 
-            <Button
-                android:id="@+id/goButton"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/garrulousOrange"
-                android:text="@string/text_go"
-                android:textColor="@color/garrulousWhite"
-                android:layout_alignParentRight = "true"
+            />
 
-                />
-
-        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -70,12 +66,14 @@
         android:layout_marginTop="5dp">
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/userListView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:padding="5dp"
             style="@style/ListView"
+            android:divider="@drawable/list_divider"
             />
 
     </RelativeLayout>

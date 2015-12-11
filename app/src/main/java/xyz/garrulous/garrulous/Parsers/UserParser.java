@@ -19,6 +19,8 @@ public class UserParser {
             for(int i = 0; i < json.length(); i++){
                 JSONObject obj = json.getJSONObject(i);
                 Users users = new Users();
+                users.setUid(obj.getInt("uid"));
+                users.setUsername(obj.getString("username"));
                 users.setFirstName(obj.getString("first_name"));
                 users.setLastName(obj.getString("last_name"));
                 usersList.add(users);

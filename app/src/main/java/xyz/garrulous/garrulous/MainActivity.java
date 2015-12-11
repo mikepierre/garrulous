@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         PrefSingleton.getInstance().Initialize(getApplicationContext());
         Token token = new Token();
         Log.d("Shared Tok: ", token.getSharedToken());
@@ -44,9 +43,12 @@ public class MainActivity extends AppCompatActivity {
         if(SharedToken != ""){
             Log.d("If Shared new intent", "Exists!");
             Intent intent = new Intent(this, MessagesActivity.class);
+            //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
         }
 
+        setContentView(R.layout.activity_login);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // We have to set this text here because we can't underline stuff in the layout.
         // It has to be done in the code.
         TextView registerTextView = (TextView) findViewById(R.id.registerTextView);
@@ -92,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             try {
-                Intent intent = new Intent(this,MessagesActivity.class);
+                Intent intent = new Intent(this, MessagesActivity.class);
+                //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
                 // user name and password to send to API.
                 Log.d("username :", username.getText().toString());
                 Log.d("password :", password.getText().toString());
