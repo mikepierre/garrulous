@@ -29,7 +29,10 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.ViewProfileActivity" />
-        <activity android:name=".Activities.EditProfileActivity" />
+        <activity
+            android:name=".Activities.EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+        />
         <activity
             android:name=".RequestActivity"
             android:label="@string/title_activity_request"

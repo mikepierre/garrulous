@@ -26,15 +26,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Modify Profile");
+        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
-
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
     }
 
     // inflates the menu with the menu activity.
@@ -49,9 +43,10 @@ public class EditProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        /*if (id == R.id.action_settings) {
+        if (id == android.R.id.home) {
+            onBackPressed();
             return true;
-        }*/
+        }
 
         return super.onOptionsItemSelected(item);
     }
