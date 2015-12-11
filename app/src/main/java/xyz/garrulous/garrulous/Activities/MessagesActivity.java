@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,6 +145,10 @@ public class MessagesActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MessagesActivity.this, MessageThreadActivity.class);
+                TextView v = (TextView)findViewById(R.id.hiddenUidTextView);
+                //Toast toast = Toast.makeText(getApplicationContext(), v.getText().toString(), Toast.LENGTH_SHORT);
+                //toast.show();
+                intent.putExtra("uid",v.getText().toString());
                 startActivity(intent);
             }
         });

@@ -23,6 +23,7 @@ public class ThreadListParser {
                 JSONObject obj = json.getJSONObject(i);
                 Messages message = new Messages();
                 message.setUser_name_message_from(obj.getString("user_name_message_from"));
+                message.setUid_message_from(obj.getInt("uid_message_from"));
                 messagelist.add(message);
             }
             return messagelist;

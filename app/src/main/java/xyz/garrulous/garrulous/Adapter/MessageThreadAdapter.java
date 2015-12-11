@@ -34,6 +34,9 @@ public class MessageThreadAdapter extends ArrayAdapter<Messages> {
         TextView tv = (TextView) view.findViewById(R.id.userNameTextView);
         tv.setText(messages.getUser_name_message_from());
 
+        TextView tv_uid = (TextView) view.findViewById(R.id.hiddenUidTextView);
+        tv_uid.setText(Integer.toString(messages.getUid_message_from()));
+
         return view;
     }
 }

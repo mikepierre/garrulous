@@ -12,4 +12,12 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:textColor="@color/garrulousWhite"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hiddenUidTextView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 </RelativeLayout>

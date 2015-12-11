@@ -1,5 +1,6 @@
 package xyz.garrulous.garrulous.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,8 +42,11 @@ public class MessageThreadActivity extends AppCompatActivity {
 
     // POST Message to api
     public void sendMessageHandler(View view){
-        //EditText uid = (EditText) findViewById();
         EditText message = (EditText) findViewById(R.id.messageText);
+        // get the id
+        Bundle bundle = getIntent().getExtras();
+        String uid_string = bundle.getString("uid");
+        int uid = Integer.parseInt(uid_string);
     }
 
     private class postMessageTask extends AsyncTask<Post, String, String>{
