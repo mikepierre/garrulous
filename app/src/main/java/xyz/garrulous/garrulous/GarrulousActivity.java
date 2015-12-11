@@ -100,7 +100,7 @@ public class GarrulousActivity extends AppCompatActivity {
         messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(GarrulousActivity.this, ViewProfileActivity.class);
+                Intent intent = new Intent(GarrulousActivity.this, MessageThreadActivity.class);
                 startActivity(intent);
             }
         });
