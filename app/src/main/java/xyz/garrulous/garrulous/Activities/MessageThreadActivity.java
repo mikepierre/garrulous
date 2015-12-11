@@ -1,13 +1,19 @@
 package xyz.garrulous.garrulous.Activities;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
+import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.R;
+import xyz.garrulous.garrulous.Requests.Post;
 
 public class MessageThreadActivity extends AppCompatActivity {
 
@@ -35,9 +41,22 @@ public class MessageThreadActivity extends AppCompatActivity {
 
     // POST Message to api
     public void sendMessageHandler(View view){
+        //EditText uid = (EditText) findViewById();
         EditText message = (EditText) findViewById(R.id.messageText);
     }
 
-    
+    private class postMessageTask extends AsyncTask<Post, String, String>{
+
+        @Override
+        protected String doInBackground(Post... params){
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            Log.d("Result", result);
+        }
+    }
 
 }
