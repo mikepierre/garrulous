@@ -142,7 +142,7 @@ public class MessagesActivity extends AppCompatActivity
         messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MessagesActivity.this, ViewProfileActivity.class);
+                Intent intent = new Intent(MessagesActivity.this, MessageThreadActivity.class);
                 startActivity(intent);
             }
         });
