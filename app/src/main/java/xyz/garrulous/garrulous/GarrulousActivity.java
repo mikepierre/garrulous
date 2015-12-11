@@ -16,16 +16,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import xyz.garrulous.garrulous.Activities.EditProfileActivity;
-import xyz.garrulous.garrulous.Activities.ViewProfileActivity;
+import xyz.garrulous.garrulous.Activities.MessageThreadActivity;
 import xyz.garrulous.garrulous.Adapter.MessageThreadAdapter;
-import xyz.garrulous.garrulous.Adapter.UserAdapter;
 import xyz.garrulous.garrulous.Model.Messages;
 import xyz.garrulous.garrulous.Model.PrefSingleton;
 import xyz.garrulous.garrulous.Model.Token;
-import xyz.garrulous.garrulous.Model.Users;
 import xyz.garrulous.garrulous.Parsers.ThreadListParser;
-import xyz.garrulous.garrulous.Parsers.UserParser;
 import xyz.garrulous.garrulous.Requests.Get;
 
 

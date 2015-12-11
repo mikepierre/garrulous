@@ -1,7 +1,9 @@
-package xyz.garrulous.garrulous;
+package xyz.garrulous.garrulous.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import xyz.garrulous.garrulous.R;
 
 public class MessageThreadActivity extends AppCompatActivity {
 
