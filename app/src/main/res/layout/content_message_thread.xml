@@ -51,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:background="@color/garrulousOrange"
-        android:layout_marginTop="2dp">
+        android:layout_marginBottom="2dp">
 
         <EditText
             android:id="@+id/editText"
@@ -60,7 +60,8 @@
             android:layout_above="@+id/imageButton"
             android:layout_gravity="center_horizontal"
             android:height="30dp"
-            android:background="@color/garrulousWhite" />
+            android:background="@color/garrulousWhite"
+            android:layout_marginTop="3dp"/>
 
         <ImageButton
             android:id="@+id/imageButton"
