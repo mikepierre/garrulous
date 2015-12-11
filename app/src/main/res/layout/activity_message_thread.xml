@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="xyz.garrulous.garrulous.MessageThreadActivity">
+    tools:context="xyz.garrulous.garrulous.MessageThreadActivity"
+    android:background="@color/backgroundColor">
 
 
     <RelativeLayout
@@ -37,10 +38,9 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#0000ff"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -71,6 +71,7 @@
                 android:layout_marginLeft="259dp"
                 android:layout_marginStart="259dp"
                 android:src="@drawable/ic_menu_send"
+                android:background="@drawable/round_corners"
                 />
 
 
