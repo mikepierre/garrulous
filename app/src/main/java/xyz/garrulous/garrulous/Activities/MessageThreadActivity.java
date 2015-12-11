@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import xyz.garrulous.garrulous.R;
 
@@ -30,4 +32,12 @@ public class MessageThreadActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // POST Message to api
+    public void sendMessageHandler(View view){
+        EditText message = (EditText) findViewById(R.id.messageText);
+    }
+
+    
+
 }

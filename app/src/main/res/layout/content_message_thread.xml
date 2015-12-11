@@ -54,17 +54,17 @@
         android:layout_marginBottom="2dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/messageText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/imageButton"
+            android:layout_above="@+id/sendMessageButton"
             android:layout_gravity="center_horizontal"
             android:height="30dp"
             android:background="@color/garrulousWhite"
             android:layout_marginTop="3dp"/>
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/sendMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -76,7 +76,8 @@
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/garrulousWhite"
             android:src="@drawable/ic_menu_send"
-            android:tint="@color/garrulousOrange" />
+            android:tint="@color/garrulousOrange"
+            android:onClick="sendMessageHandler"/>
 
     </LinearLayout>
 
