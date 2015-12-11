@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Token token = new Token();
         Log.d("Shared Tok: ", token.getSharedToken());
         //setSupportActionBar(toolbar); //comment this out for time being.
+
         String SharedToken = token.getSharedToken();
         if(SharedToken != ""){
             Log.d("If Shared new intent", "Exists!");

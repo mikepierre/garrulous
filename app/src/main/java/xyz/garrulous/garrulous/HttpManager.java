@@ -20,7 +20,7 @@ import xyz.garrulous.garrulous.Requests.Put;
 
 
 public class HttpManager {
-    
+
     // Request via HTTP GET from the server.
     public static HashMap getData(Get g){
         BufferedReader reader = null;
