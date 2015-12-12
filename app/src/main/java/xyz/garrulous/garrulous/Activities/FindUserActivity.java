@@ -1,11 +1,9 @@
 package xyz.garrulous.garrulous.Activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,9 +18,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
-import xyz.garrulous.garrulous.Adapter.MessageThreadAdapter;
 import xyz.garrulous.garrulous.Adapter.UserListAdapter;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.Model.Token;

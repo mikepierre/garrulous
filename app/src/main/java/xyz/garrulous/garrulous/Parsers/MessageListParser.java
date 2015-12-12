@@ -19,7 +19,14 @@ public class MessageListParser {
             JSONObject obj = json.getJSONObject(key);
             Messages messages = new Messages();
             HashMap map = new HashMap<>();
-            //[{"uid_message_from": 1, "user_name_message_from": "rickyrem", "uid_message_to": 2, "user_name_message_to": "mike"}]
+            /*
+            {
+              "2": {
+                "date_time": 1449349227,
+                "user_name": "mike"
+              }
+            }
+             */
             messages.setUid_message_from(obj.getInt("uid_message_from"));
             messages.setUser_name_message_from(obj.getString("user_name_message_from"));
             int uid_message_from = messages.getUid_message_from();

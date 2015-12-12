@@ -23,6 +23,8 @@ public class LoginParser {
             t.setToken(obj.getString("token"));
             t.setError(obj.getBoolean("error"));
             t.setMessage(obj.getString("msg"));
+            t.setUid(obj.getInt("uid"));
+            t.setUsername(obj.getString("user_name"));
             return t;
 
         } catch (Exception e) {

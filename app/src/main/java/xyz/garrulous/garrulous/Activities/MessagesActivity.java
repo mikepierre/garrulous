@@ -157,7 +157,7 @@ public class MessagesActivity extends AppCompatActivity
 
                 MessageListParser messageListParser = new MessageListParser();
 
-                 HashMap map = messageListParser.MessageListData(result, i);
+                HashMap map = messageListParser.MessageListData(result, i);
 
                 Log.d("UID from: -> ", String.valueOf(map.get("uid_message_from")));
 
