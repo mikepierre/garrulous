@@ -9,6 +9,8 @@ public class Token {
 
     private String message = "";
     private Boolean error  = false;
+    private Integer uid = 0;
+    private String username = "";
 
     public String getSharedToken() {
         String token = PrefSingleton.getInstance().getPreference("auth_token");
@@ -43,5 +45,25 @@ public class Token {
 
     public void setToken(String token) {
         this.setSharedToken(token);
+    }
+
+    public Integer getUid() {
+        Integer uid = Integer.parseInt(PrefSingleton.getInstance().getPreference("user_name"));
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        PrefSingleton.getInstance().writePreference("uid", uid.toString());
+        this.uid = uid;
+    }
+
+    public String getUsername() {
+        String username = PrefSingleton.getInstance().getPreference("user_name");
+        return username;
+    }
+
+    public void setUsername(String username) {
+        PrefSingleton.getInstance().writePreference("user_name", username);
+        this.username = username;
     }
 }
