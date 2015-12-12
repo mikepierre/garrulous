@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import xyz.garrulous.garrulous.Model.Messages;
+import xyz.garrulous.garrulous.Model.Users;
 import xyz.garrulous.garrulous.R;
 
 /**
@@ -33,10 +34,8 @@ public class MessageThreadAdapter extends ArrayAdapter<Messages> {
         Messages messages = messagesList.get(position);
         TextView tv = (TextView) view.findViewById(R.id.userNameTextView);
         tv.setText(messages.getUser_name_message_from());
-
-        TextView tv_uid = (TextView) view.findViewById(R.id.hiddenUidTextView);
-        tv_uid.setText(Integer.toString(messages.getUid_message_from()));
-
+        Users users = new Users();
+        users.setUid(messages.getUid_message_from());
         return view;
     }
 }

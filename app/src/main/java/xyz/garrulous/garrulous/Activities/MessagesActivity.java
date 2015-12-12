@@ -28,6 +28,8 @@ import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.MainActivity;
 import xyz.garrulous.garrulous.Model.Messages;
 import xyz.garrulous.garrulous.Model.Token;
+import xyz.garrulous.garrulous.Model.Users;
+import xyz.garrulous.garrulous.Parsers.MessageListParser;
 import xyz.garrulous.garrulous.Parsers.ThreadListParser;
 import xyz.garrulous.garrulous.R;
 import xyz.garrulous.garrulous.Requests.Get;
@@ -146,13 +148,22 @@ public class MessagesActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MessagesActivity.this, MessageThreadActivity.class);
-                TextView v = (TextView)findViewById(R.id.hiddenUidTextView);
+
                 //Toast toast = Toast.makeText(getApplicationContext(), v.getText().toString(), Toast.LENGTH_SHORT);
                 //toast.show();
+
                 Log.d("Get Json Data ", result);
                 Log.d("Log ", String.valueOf(i));
+
+                MessageListParser messageListParser = new MessageListParser();
+
+                 HashMap map = messageListParser.MessageListData(result, i);
+
+                Log.d("UID from: -> ", String.valueOf(map.get("uid_message_from")));
+
+
                 // we get the user id using the poision from the JSON array.
-                intent.putExtra("uid",v.getText().toString());
+
                 startActivity(intent);
             }
         });
