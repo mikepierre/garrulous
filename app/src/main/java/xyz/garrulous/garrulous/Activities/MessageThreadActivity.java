@@ -2,22 +2,37 @@ package xyz.garrulous.garrulous.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import xyz.garrulous.garrulous.Adapter.MessageAdapter;
 import xyz.garrulous.garrulous.HttpManager;
+import xyz.garrulous.garrulous.Model.Messages;
+import xyz.garrulous.garrulous.Model.PrefSingleton;
+import xyz.garrulous.garrulous.Model.Token;
+import xyz.garrulous.garrulous.Model.Users;
+import xyz.garrulous.garrulous.Parsers.MessageThreadParser;
 import xyz.garrulous.garrulous.R;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
 
 public class MessageThreadActivity extends AppCompatActivity {
+
+    Users users = new Users();
+    List<Messages> MessageThread;
+    List<MessageThreadTask> messageThreadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +42,10 @@ public class MessageThreadActivity extends AppCompatActivity {
         toolbar.setTitle("Thread");
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
+        // get token.
+        PrefSingleton.getInstance().Initialize(getApplicationContext());
+        Token token = new Token();
+        Log.d("Token @ MessageAct: ", token.getSharedToken());
 
         // This block helps us be verbose about making sure the username and uid are filled
         String username;
@@ -46,6 +65,12 @@ public class MessageThreadActivity extends AppCompatActivity {
         }
         Log.d("username is", username);
         Log.d("uid is", uid.toString());
+
+        users.setUid(Integer.parseInt(uid.toString()));
+
+        messageThreadTask = new ArrayList<>();
+        requestData(token.getSharedToken());
+
     }
 
     @Override
@@ -60,22 +85,46 @@ public class MessageThreadActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*private void requestMessageThread(String token){
-
-        MessageThreadListTask messageThreadListTask = new MessageThreadListTask();
+    private void requestData(String token){
+        MessageThreadTask messageThreadTask = new MessageThreadTask();
         Get g = new Get();
         g.setUrn("/v1/msg");
         g.setParam("token", token);
-        messageThreadListTask.execute(g);
-    }*/
+        g.setParam("to_uid", String.valueOf(users.getUid()));
+        Log.d("Tok2API", token);
+        Log.d("UID2API",String.valueOf(users.getUid()));
+        messageThreadTask.execute(g);
+    }
+
+    protected void updateDisplay(){
+
+
+        Log.d("MessageThread", String.valueOf(MessageThread));
+
+        MessageAdapter messageAdapter = new MessageAdapter(this ,R.layout.message_list, MessageThread);
+
+        final ListView messageThread = (ListView)findViewById(R.id.listView2);
+
+        Log.d("messageAdapter", String.valueOf(messageAdapter));
+
+        messageThread.setAdapter(messageAdapter);
+
+        messageThread.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Position", String.valueOf(i));
+                Intent intent = new Intent(MessageThreadActivity.this, MessageThreadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 
     // POST Message to api
     public void sendMessageHandler(View view){
         EditText message = (EditText) findViewById(R.id.messageText);
-        // get the id
-        Bundle bundle = getIntent().getExtras();
-        String uid_string = bundle.getString("uid");
-        int uid = Integer.parseInt(uid_string);
+        Log.d("Message ",message.getText().toString());
+        Log.d("UID->", String.valueOf(users.getUid()));
     }
 
     private class postMessageTask extends AsyncTask<Post, String, String>{
@@ -89,6 +138,35 @@ public class MessageThreadActivity extends AppCompatActivity {
         protected void onPostExecute(String result){
             super.onPostExecute(result);
             Log.d("Result", result);
+        }
+    }
+
+    private class MessageThreadTask extends AsyncTask<Get, String, String>{
+        @Override
+        protected void onPreExecute(){
+
+            messageThreadTask.add(this);
+
+        }
+
+        @Override
+        protected String doInBackground(Get... params) {
+            HashMap content = HttpManager.getData(params[0]);
+            // check if any invalid details
+            if (content.get("code").equals("403")) {
+                return "{ \"error\": \"Invalid details\"}";
+            } else {
+                //  post json message.
+                return String.valueOf(content.get("body"));
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            MessageThread = MessageThreadParser.parseMessage(result);
+            //Log.d("Message ThreadMSG", String.valueOf(MessageThread.get(0).getMessage()));
+            updateDisplay();
+            Log.d("Results1", result);
         }
     }
 
