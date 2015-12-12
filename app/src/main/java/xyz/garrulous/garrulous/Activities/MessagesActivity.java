@@ -143,7 +143,6 @@ public class MessagesActivity extends AppCompatActivity
     protected void updateDisplay(final String result){
         MessageThreadAdapter messageThreadAdapter = new MessageThreadAdapter(this, R.layout.thread_list, MessageList);
         final ListView messageList = (ListView)findViewById(R.id.listView);
-        //messageList.setAdapter(messageThreadAdapter);
         messageList.setAdapter(messageThreadAdapter);
 
 
@@ -152,15 +151,10 @@ public class MessagesActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MessagesActivity.this, MessageThreadActivity.class);
 
-                //Toast toast = Toast.makeText(getApplicationContext(), v.getText().toString(), Toast.LENGTH_SHORT);
-                //toast.show();
-
                 Object item = messageList.getItemAtPosition(i);
                 Messages message = (Messages) item;
                 Log.d("UserList", "Selected is " + message.getUser_name_message_from());
-
-
-                // we get the user id using the poision from the JSON array.
+                Log.d("UserList", "Selected is " + message.getUid_message_from());
 
                 startActivity(intent);
             }
