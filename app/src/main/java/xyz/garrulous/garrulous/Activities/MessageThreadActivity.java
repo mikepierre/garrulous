@@ -30,7 +30,7 @@ public class MessageThreadActivity extends AppCompatActivity {
 
         // This block helps us be verbose about making sure the username and uid are filled
         String username;
-        String uid;
+        Integer uid;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
@@ -38,14 +38,14 @@ public class MessageThreadActivity extends AppCompatActivity {
                 uid = null;
             } else {
                 username = extras.getString("username");
-                uid = extras.getString("uid");
+                uid = extras.getInt("uid");
             }
         } else {
             username = (String) savedInstanceState.getSerializable("username");
-            uid = (String) savedInstanceState.getSerializable("uid");
+            uid = (Integer) savedInstanceState.getSerializable("uid");
         }
-        Log.d("ThreadUsername", username);
-        Log.d("ThreadUid", uid);
+        Log.d("username is", username);
+        Log.d("uid is", uid.toString());
     }
 
     @Override
