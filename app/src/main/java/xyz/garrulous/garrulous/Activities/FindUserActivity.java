@@ -1,6 +1,7 @@
 package xyz.garrulous.garrulous.Activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -30,6 +31,8 @@ import xyz.garrulous.garrulous.Requests.Get;
 public class FindUserActivity extends AppCompatActivity {
 
     List<Users> UserList;
+    String selectedUsername = "";
+    Integer selectedUid = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +111,9 @@ public class FindUserActivity extends AppCompatActivity {
                 Object item = userList.getItemAtPosition(i);
                 Users user = (Users) item;
                 Log.d("UserList", "Selected is " + user.getUsername());
-
+                Log.d("UserList", "Selected id is " + user.getUid());
+                selectedUid = user.getUid();
+                selectedUsername = user.getUsername();
 
                 AlertDialog dialog = new AlertDialog.Builder(view.getContext()).create();
                 dialog.setTitle("Create Message");
@@ -116,12 +121,18 @@ public class FindUserActivity extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int buttonId) {
-                        Toast.makeText(FindUserActivity.this, "yes", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(FindUserActivity.this, MessageThreadActivity.class);
+
+                        // There is an issue with scope here. We can't access the user object to
+                        // get the username and uid.
+                        intent.putExtra("username", selectedUsername);
+                        intent.putExtra("uid", selectedUid.toString());
+                        startActivity(intent);
                     }
                 });
                 dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int buttonId) {
-                        Toast.makeText(FindUserActivity.this, "no", Toast.LENGTH_LONG).show();
+
                     }
                 });
                 dialog.setIcon(android.R.drawable.ic_dialog_alert);

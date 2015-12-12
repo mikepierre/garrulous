@@ -155,7 +155,8 @@ public class MessagesActivity extends AppCompatActivity
                 Messages message = (Messages) item;
                 Log.d("UserList", "Selected is " + message.getUser_name_message_from());
                 Log.d("UserList", "Selected is " + message.getUid_message_from());
-
+                intent.putExtra("username", message.getUser_name_message_from());
+                intent.putExtra("uid", message.getUid_message_from());
                 startActivity(intent);
             }
         });

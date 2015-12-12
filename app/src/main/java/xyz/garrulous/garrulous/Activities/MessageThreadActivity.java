@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.R;
+import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
 
 public class MessageThreadActivity extends AppCompatActivity {
@@ -26,6 +27,25 @@ public class MessageThreadActivity extends AppCompatActivity {
         toolbar.setTitle("Thread");
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
+
+        // This block helps us be verbose about making sure the username and uid are filled
+        String username;
+        String uid;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                username = null;
+                uid = null;
+            } else {
+                username = extras.getString("username");
+                uid = extras.getString("uid");
+            }
+        } else {
+            username = (String) savedInstanceState.getSerializable("username");
+            uid = (String) savedInstanceState.getSerializable("uid");
+        }
+        Log.d("ThreadUsername", username);
+        Log.d("ThreadUid", uid);
     }
 
     @Override
@@ -39,6 +59,15 @@ public class MessageThreadActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /*private void requestMessageThread(String token){
+
+        MessageThreadListTask messageThreadListTask = new MessageThreadListTask();
+        Get g = new Get();
+        g.setUrn("/v1/msg");
+        g.setParam("token", token);
+        messageThreadListTask.execute(g);
+    }*/
 
     // POST Message to api
     public void sendMessageHandler(View view){
