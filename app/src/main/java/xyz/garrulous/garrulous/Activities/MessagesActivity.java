@@ -3,6 +3,7 @@ package xyz.garrulous.garrulous.Activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import xyz.garrulous.garrulous.Adapter.MessageThreadAdapter;
+import xyz.garrulous.garrulous.Adapter.UserListAdapter;
 import xyz.garrulous.garrulous.HttpManager;
 import xyz.garrulous.garrulous.MainActivity;
 import xyz.garrulous.garrulous.Model.Messages;
@@ -141,6 +143,7 @@ public class MessagesActivity extends AppCompatActivity
     protected void updateDisplay(final String result){
         MessageThreadAdapter messageThreadAdapter = new MessageThreadAdapter(this, R.layout.thread_list, MessageList);
         final ListView messageList = (ListView)findViewById(R.id.listView);
+        //messageList.setAdapter(messageThreadAdapter);
         messageList.setAdapter(messageThreadAdapter);
 
 
@@ -152,14 +155,9 @@ public class MessagesActivity extends AppCompatActivity
                 //Toast toast = Toast.makeText(getApplicationContext(), v.getText().toString(), Toast.LENGTH_SHORT);
                 //toast.show();
 
-                Log.d("Get Json Data ", result);
-                Log.d("Log ", String.valueOf(i));
-
-                MessageListParser messageListParser = new MessageListParser();
-
-                HashMap map = messageListParser.MessageListData(result, i);
-
-                Log.d("UID from: -> ", String.valueOf(map.get("uid_message_from")));
+                Object item = messageList.getItemAtPosition(i);
+                Messages message = (Messages) item;
+                Log.d("UserList", "Selected is " + message.getUser_name_message_from());
 
 
                 // we get the user id using the poision from the JSON array.
