@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 import android.widget.EditText;
 
 import org.json.JSONArray;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.GarrulousActivity;
 import xyz.garrulous.garrulous.HttpManager;
@@ -27,11 +29,13 @@ import xyz.garrulous.garrulous.Parsers.ThreadListParser;
 import xyz.garrulous.garrulous.Parsers.UserParser;
 import xyz.garrulous.garrulous.R;
 import xyz.garrulous.garrulous.Requests.Get;
+import xyz.garrulous.garrulous.Requests.Post;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     private EditText editFirstName;
     private EditText editLastName;
+    private EditText passwordEditText;
 
     // starts the activity for edit profile.
     @Override
@@ -41,15 +45,31 @@ public class EditProfileActivity extends AppCompatActivity {
 
         editFirstName = (EditText) findViewById(R.id.firstNameEditTextProfile);
         editLastName = (EditText) findViewById(R.id.lastNameEditTextProfile);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Modify Profile");
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
-        Token token = new Token();
 
-
+        final Token token = new Token();
         getUserData(token);
+
+        Button updateProfileButton = (Button) findViewById(R.id.updateProfileButton);
+        updateProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Token token = new Token();
+                try {
+                    setUserData(token);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     // inflates the menu with the menu activity.
@@ -66,6 +86,16 @@ public class EditProfileActivity extends AppCompatActivity {
         g.setParam("token", token.getSharedToken());
         g.setParam("user", token.getUid().toString());
         task.execute(g);
+    }
+
+    private void setUserData(Token token) throws ExecutionException, InterruptedException {
+        EditProfileTask task = new EditProfileTask();
+        Post p = new Post();
+        p.setUrn("/v1/user");
+        p.setParam("token", token.getSharedToken());
+        String settings = "";
+        p.setHttpBody(settings);
+        String responce = task.execute(p).get();
     }
 
     @Override
@@ -100,19 +130,25 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
-    public class EditProfileTask extends AsyncTask<Get, String, String> {
+
+    private class EditProfileTask extends AsyncTask<Post, String, String> {
 
         @Override
-        protected String doInBackground(Get... params) {
-            HashMap content = HttpManager.getData(params[0]);
-            return String.valueOf(content);
+        protected String doInBackground(Post... params) {
+            HashMap content = HttpManager.postData(params[0]);
+            // check if any invalid details
+            if (content.get("code").equals("403")) {
+                return "{ \"error\": Invalid details}";
+            } else {
+                //  post json message.
+                return String.valueOf(content.get("body"));
+            }
         }
 
         @Override
         protected void onPostExecute(String result) {
-
             super.onPostExecute(result);
-
+            Log.d("Result", result);
         }
     }
 
@@ -145,5 +181,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }
