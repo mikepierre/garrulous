@@ -102,9 +102,9 @@ public class MessageThreadActivity extends AppCompatActivity {
         Log.d("MessageThread", String.valueOf(MessageThread));
 
         MessageAdapter messageAdapter = new MessageAdapter(this ,R.layout.message_list, MessageThread);
-
         final ListView messageThread = (ListView)findViewById(R.id.listView2);
-
+        messageThread.setAdapter(messageAdapter);
+        /*
         Log.d("messageAdapter", String.valueOf(messageAdapter));
 
         messageThread.setAdapter(messageAdapter);
@@ -117,6 +117,7 @@ public class MessageThreadActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
 
     }
 

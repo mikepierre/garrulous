@@ -2,6 +2,7 @@ package xyz.garrulous.garrulous.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +35,12 @@ public View getView(int position, View convertView, ViewGroup parent){
     View view = inflater.inflate(R.layout.message_list, parent, false);
     Messages messages = messagesList.get(position);
 
-    TextView tvUserName = (TextView) view.findViewById(R.id.userMessageTextView);
+    Log.d("Messages",messages.getMessage());
+
+    TextView tvUserName = (TextView) view.findViewById(R.id.messageFromTextView);
     tvUserName.setText(messages.getUser_name_message_from());
 
-    TextView tvMessage = (TextView) view.findViewById(R.id.messageFromTextView);
+    TextView tvMessage = (TextView) view.findViewById(R.id.userMessageTextView);
     tvMessage.setText(": " + messages.getMessage());
 
     return view;
