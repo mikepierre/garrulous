@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,10 +43,7 @@ public class MessageThreadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_thread);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Thread");
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
-        setSupportActionBar(toolbar);
+
         // get token.
         Token token = new Token();
         //Log.d("Token @ MessageAct: ", token.getSharedToken());
@@ -68,6 +66,10 @@ public class MessageThreadActivity extends AppCompatActivity {
         }
         Log.d("username is", username);
         Log.d("uid is", uid.toString());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(username);
+        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
+        setSupportActionBar(toolbar);
 
         users.setUid(Integer.parseInt(uid.toString()));
 
@@ -102,10 +104,11 @@ public class MessageThreadActivity extends AppCompatActivity {
     protected void updateDisplay() {
 
         Log.d("MessageThread", String.valueOf(MessageThread));
-        MessageAdapter messageAdapter = new MessageAdapter(this, R.layout.message_list, MessageThread);
-        final ListView messageThread = (ListView) findViewById(R.id.listView2);
-        messageThread.setAdapter(messageAdapter);
-
+        if (MessageThread != null) {
+            MessageAdapter messageAdapter = new MessageAdapter(this, R.layout.message_list, MessageThread);
+            final ListView messageThread = (ListView) findViewById(R.id.listView2);
+            messageThread.setAdapter(messageAdapter);
+        }
     }
 
     // POST Message to api
