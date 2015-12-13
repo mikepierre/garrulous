@@ -21,7 +21,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/messageFromTextView"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/garrulousWhite"
         />
