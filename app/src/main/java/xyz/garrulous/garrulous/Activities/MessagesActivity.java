@@ -77,6 +77,14 @@ public class MessagesActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Token token = new Token();
+        messageThreadListTasks = new ArrayList<>();
+        requestMessageThread(token.getSharedToken());
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -189,4 +197,5 @@ public class MessagesActivity extends AppCompatActivity
             Log.d("Results", result);
         }
     }
+
 }
