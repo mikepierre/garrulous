@@ -42,7 +42,8 @@
             android:lines="1"
             android:scrollHorizontally="true"
             android:ellipsize="end"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/garrulousWhite"/>
 
         <Button
             android:id="@+id/goButton"

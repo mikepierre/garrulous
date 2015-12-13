@@ -43,7 +43,7 @@ public class Messages {
     }
 
     public String getUser_name_message_from() {
-        return user_name_message_from;
+        return user_name_message_from.substring(0,1).toUpperCase() + user_name_message_from.substring(1);
     }
 
     public void setUser_name_message_from(String user_name_message_from) {
