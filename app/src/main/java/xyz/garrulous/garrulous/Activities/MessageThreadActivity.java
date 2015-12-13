@@ -13,6 +13,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,9 +47,8 @@ public class MessageThreadActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
         // get token.
-        PrefSingleton.getInstance().Initialize(getApplicationContext());
         Token token = new Token();
-        Log.d("Token @ MessageAct: ", token.getSharedToken());
+        //Log.d("Token @ MessageAct: ", token.getSharedToken());
 
         // This block helps us be verbose about making sure the username and uid are filled
         String username;
@@ -107,19 +109,26 @@ public class MessageThreadActivity extends AppCompatActivity {
     }
 
     // POST Message to api
-    public void sendMessageHandler(View view) {
+    public void sendMessageHandler(View view) throws JSONException {
         EditText message = (EditText) findViewById(R.id.messageText);
         Log.d("Message ", message.getText().toString());
         Log.d("UID->", String.valueOf(users.getUid()));
+        Token token = new Token();
 
-        // SEND PORT HERE
+        // SEND POST HERE
         Post post = new Post();
         // json['to_id'], json['message'],
         post.setUrn("v1/msg");
-        post.setParam("message", message.getText().toString());
-        post.setParam("to_id", String.valueOf(users.getUid()));
+        post.setParam("token", token.getSharedToken());
+
+        JSONObject messageData = new JSONObject();
+        messageData.put("to_id", String.valueOf(users.getUid()));
+        messageData.put("message", message.getText().toString());
+
+        post.setHttpBody(messageData.toString());
+
         PostMessageTask postMessageTask = new PostMessageTask();
-/* post message here
+
         try {
            String response = postMessageTask.execute(post).get();
             Log.d("JSON: ", response);
@@ -128,9 +137,10 @@ public class MessageThreadActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-*/
         // RESET Message Text after submited.
         message.setText("");
+        messageThreadTask = new ArrayList<>();
+        requestData(token.getSharedToken());
     }
 
     private class PostMessageTask extends AsyncTask<Post, String, String> {

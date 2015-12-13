@@ -59,6 +59,7 @@ public class HttpManager {
 
     public static HashMap postData(Post p){
         String uri = p.getUri();
+        uri += "?" + p.getEncodedParams();
         BufferedReader reader = null;
 
         try {
@@ -70,14 +71,16 @@ public class HttpManager {
 
             OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
 
-            try {
+            /*try {
                 writer.write(p.JsonPOST());
                 Log.d("JSON", p.JsonPOST());
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
+            writer.write(p.getHttpBody());
+            writer.close();
 
-            writer.flush();
+            //writer.flush();
 
             int responseCode = con.getResponseCode();
             Log.d("Response Code POST", String.valueOf(responseCode));

@@ -126,7 +126,7 @@ public class FindUserActivity extends AppCompatActivity {
                         // There is an issue with scope here. We can't access the user object to
                         // get the username and uid.
                         intent.putExtra("username", selectedUsername);
-                        intent.putExtra("uid", selectedUid.toString());
+                        intent.putExtra("uid", selectedUid);
                         startActivity(intent);
                     }
                 });
