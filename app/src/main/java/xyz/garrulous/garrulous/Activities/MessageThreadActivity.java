@@ -16,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import xyz.garrulous.garrulous.Adapter.MessageAdapter;
 import xyz.garrulous.garrulous.HttpManager;
@@ -52,7 +53,7 @@ public class MessageThreadActivity extends AppCompatActivity {
         Integer uid;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null) {
+            if (extras == null) {
                 username = null;
                 uid = null;
             } else {
@@ -85,66 +86,78 @@ public class MessageThreadActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void requestData(String token){
+    private void requestData(String token) {
         MessageThreadTask messageThreadTask = new MessageThreadTask();
         Get g = new Get();
         g.setUrn("/v1/msg");
         g.setParam("token", token);
         g.setParam("to_uid", String.valueOf(users.getUid()));
         Log.d("Tok2API", token);
-        Log.d("UID2API",String.valueOf(users.getUid()));
+        Log.d("UID2API", String.valueOf(users.getUid()));
         messageThreadTask.execute(g);
     }
 
-    protected void updateDisplay(){
-
+    protected void updateDisplay() {
 
         Log.d("MessageThread", String.valueOf(MessageThread));
-
-        MessageAdapter messageAdapter = new MessageAdapter(this ,R.layout.message_list, MessageThread);
-        final ListView messageThread = (ListView)findViewById(R.id.listView2);
+        MessageAdapter messageAdapter = new MessageAdapter(this, R.layout.message_list, MessageThread);
+        final ListView messageThread = (ListView) findViewById(R.id.listView2);
         messageThread.setAdapter(messageAdapter);
-        /*
-        Log.d("messageAdapter", String.valueOf(messageAdapter));
-
-        messageThread.setAdapter(messageAdapter);
-
-        messageThread.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("Position", String.valueOf(i));
-                Intent intent = new Intent(MessageThreadActivity.this, MessageThreadActivity.class);
-                startActivity(intent);
-            }
-        });
-        */
 
     }
 
     // POST Message to api
-    public void sendMessageHandler(View view){
+    public void sendMessageHandler(View view) {
         EditText message = (EditText) findViewById(R.id.messageText);
-        Log.d("Message ",message.getText().toString());
+        Log.d("Message ", message.getText().toString());
         Log.d("UID->", String.valueOf(users.getUid()));
+
+        // SEND PORT HERE
+        Post post = new Post();
+        // json['to_id'], json['message'],
+        post.setUrn("v1/msg");
+        post.setParam("message", message.getText().toString());
+        post.setParam("to_id", String.valueOf(users.getUid()));
+        PostMessageTask postMessageTask = new PostMessageTask();
+/* post message here
+        try {
+           String response = postMessageTask.execute(post).get();
+            Log.d("JSON: ", response);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+*/
+        // RESET Message Text after submited.
+        message.setText("");
     }
 
-    private class postMessageTask extends AsyncTask<Post, String, String>{
+    private class PostMessageTask extends AsyncTask<Post, String, String> {
 
         @Override
-        protected String doInBackground(Post... params){
-            return null;
+        protected String doInBackground(Post... params) {
+            HashMap content = HttpManager.postData(params[0]);
+            // check if any invalid details
+            if (content.get("code").equals("403")) {
+                return "{ \"error\": Invalid details}";
+            } else {
+                //  post json message.
+                return String.valueOf(content.get("body"));
+            }
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Log.d("Result", result);
         }
     }
 
-    private class MessageThreadTask extends AsyncTask<Get, String, String>{
+
+    private class MessageThreadTask extends AsyncTask<Get, String, String> {
         @Override
-        protected void onPreExecute(){
+        protected void onPreExecute() {
 
             messageThreadTask.add(this);
 
@@ -163,7 +176,7 @@ public class MessageThreadActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             MessageThread = MessageThreadParser.parseMessage(result);
             //Log.d("Message ThreadMSG", String.valueOf(MessageThread.get(0).getMessage()));
             updateDisplay();

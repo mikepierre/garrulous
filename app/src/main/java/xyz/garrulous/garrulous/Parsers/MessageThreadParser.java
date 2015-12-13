@@ -25,7 +25,7 @@ public class MessageThreadParser {
                 JSONObject obj = json.getJSONObject(i);
                 Messages messages = new Messages();
                 messages.setUid_message_from(obj.getInt("uid_message_from"));
-                messages.setUser_name_message_from(obj.getString("uid_message_from"));
+                messages.setUser_name_message_from(obj.getString("user_name_message_from"));
                 messages.setUid_message_to(obj.getInt("uid_message_to"));
                 messages.setMessage(obj.getString("message"));
                 messages.setDate_time(obj.getInt("date_time"));

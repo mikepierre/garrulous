@@ -38,10 +38,10 @@ public View getView(int position, View convertView, ViewGroup parent){
     Log.d("Messages",messages.getMessage());
 
     TextView tvUserName = (TextView) view.findViewById(R.id.messageFromTextView);
-    tvUserName.setText(messages.getUser_name_message_from());
+    tvUserName.setText(messages.getUser_name_message_from()+":");
 
     TextView tvMessage = (TextView) view.findViewById(R.id.userMessageTextView);
-    tvMessage.setText(": " + messages.getMessage());
+    tvMessage.setText(messages.getMessage());
 
     return view;
 }
