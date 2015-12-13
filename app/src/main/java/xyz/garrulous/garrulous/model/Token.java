@@ -48,7 +48,8 @@ public class Token {
     }
 
     public Integer getUid() {
-        Integer uid = Integer.parseInt(PrefSingleton.getInstance().getPreference("user_name"));
+        Log.d("Prefernce UID", PrefSingleton.getInstance().getPreference("uid"));
+        Integer uid = Integer.parseInt(PrefSingleton.getInstance().getPreference("uid"));
         return uid;
     }
 

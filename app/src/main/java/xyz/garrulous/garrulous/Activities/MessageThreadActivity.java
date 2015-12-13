@@ -108,6 +108,7 @@ public class MessageThreadActivity extends AppCompatActivity {
             MessageAdapter messageAdapter = new MessageAdapter(this, R.layout.message_list, MessageThread);
             final ListView messageThread = (ListView) findViewById(R.id.listView2);
             messageThread.setAdapter(messageAdapter);
+            messageThread.setSelection(messageThread.getCount() - 1);
         }
     }
 

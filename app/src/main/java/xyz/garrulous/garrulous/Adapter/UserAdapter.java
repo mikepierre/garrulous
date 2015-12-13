@@ -33,7 +33,7 @@ public class UserAdapter extends ArrayAdapter<Users> {
         View view = inflater.inflate(R.layout.users_list, parent, false);
         Users user = usersList.get(position);
         TextView tv = (TextView) view.findViewById(R.id.userNameTextView);
-       tv.setText(user.getFirstName() +" "+user.getLastName());
+        tv.setText(user.getFirstName() +" "+user.getLastName());
         return view;
     }
 
