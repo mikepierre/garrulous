@@ -48,7 +48,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lastNameEditText"
+            android:id="@+id/lastNameEditTextProfile"
             android:layout_below="@+id/lastNameTextView"
             android:layout_centerHorizontal="true" />
 
@@ -60,7 +60,7 @@
             android:textSize="20sp"
             android:id="@+id/passwordTextView"
             android:gravity="center"
-            android:layout_below="@+id/lastNameEditText"
+            android:layout_below="@+id/lastNameEditTextProfile"
             android:layout_centerHorizontal="true" />
 
         <EditText

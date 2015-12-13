@@ -38,13 +38,16 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        editFirstName = (EditText) findViewById(R.id.firstNameEditTextProfile);
+        editLastName = (EditText) findViewById(R.id.lastNameEditTextProfile);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Modify Profile");
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
         Token token = new Token();
-        editFirstName = (EditText) findViewById(R.id.firstname);
-        editLastName = (EditText) findViewById(R.id.firstname);
+
 
         getUserData(token);
     }
@@ -130,19 +133,16 @@ public class EditProfileActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             Log.d("Results", result);
-            UserParser userParser = new UserParser();
-            JSONArray json = new JSONArray();
+
             JSONObject resultobj = null;
             try {
                 resultobj = new JSONObject(result);
+                Log.d("firstname", (String) resultobj.get("first_name"));
+                editFirstName.setText((CharSequence) resultobj.get("first_name"));
+                editLastName.setText((CharSequence) resultobj.get("last_name"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            json.put(resultobj);
-            List<Users> users = userParser.parseUsers("[" + result.toString() + "]");
-            Users user = users.get(0);
-            editFirstName.setText(user.getFirstName().toString());
-            editLastName.setText(user.getLastName().toString());
         }
     }
 
