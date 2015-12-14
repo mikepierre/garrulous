@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,7 +122,6 @@ public class MessageThreadActivity extends AppCompatActivity {
 
         // SEND POST HERE
         Post post = new Post();
-        // json['to_id'], json['message'],
         post.setUrn("v1/msg");
         post.setParam("token", token.getSharedToken());
 
@@ -130,12 +130,16 @@ public class MessageThreadActivity extends AppCompatActivity {
         messageData.put("message", message.getText().toString());
 
         post.setHttpBody(messageData.toString());
-
         PostMessageTask postMessageTask = new PostMessageTask();
 
         try {
-           String response = postMessageTask.execute(post).get();
-            Log.d("JSON: ", response);
+            if(message.getText().toString().isEmpty()){
+                Toast toast = Toast.makeText(getApplicationContext(), "Please type Message", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                String response = postMessageTask.execute(post).get();
+                Log.d("JSON: ", response);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
