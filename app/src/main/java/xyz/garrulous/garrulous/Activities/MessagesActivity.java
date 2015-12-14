@@ -125,7 +125,6 @@ public class MessagesActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, EditProfileActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_logout) {
             Token t = new Token();

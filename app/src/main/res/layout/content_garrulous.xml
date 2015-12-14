@@ -21,8 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:padding="15dp"
+            android:padding="5dp"
             style="@style/ListView"
+            android:dividerHeight="2dp"
+            android:divider="@android:color/transparent"
             />
 
     </RelativeLayout>
