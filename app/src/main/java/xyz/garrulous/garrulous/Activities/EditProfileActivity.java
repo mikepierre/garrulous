@@ -11,6 +11,7 @@ import android.view.View;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -100,11 +101,22 @@ public class EditProfileActivity extends AppCompatActivity {
         json.put("first_name", editFirstName.getText());
         json.put("last_name", editLastName.getText());
         String password = passwordEditText.getText().toString();
+        /*
         if (password != "") {
             json.put("password", password);
+        }*/
+        if (editFirstName.getText().toString().isEmpty() ||
+                editLastName.getText().toString().isEmpty() ||
+                password.isEmpty()) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Please Enter information", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            json.put("password", password);
+            p.setHttpBody(json.toString());
+            task.execute(p).get();
         }
-        p.setHttpBody(json.toString());
-        task.execute(p).get();
+
         passwordEditText.setText("");
     }
 
@@ -138,7 +150,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     private class EditProfileTask extends AsyncTask<Put, String, String> {
@@ -177,7 +188,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             Log.d("Results", result);
 
             JSONObject resultobj = null;

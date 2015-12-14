@@ -75,7 +75,6 @@
             android:layout_marginLeft="259dp"
             android:layout_marginStart="259dp"
             android:layout_marginTop="5dp"
-            android:backgroundTint="@color/garrulousWhite"
             android:src="@drawable/ic_menu_send"
             android:tint="@color/garrulousOrange"
             android:onClick="sendMessageHandler"/>

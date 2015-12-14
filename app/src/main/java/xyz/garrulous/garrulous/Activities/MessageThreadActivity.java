@@ -133,8 +133,9 @@ public class MessageThreadActivity extends AppCompatActivity {
         PostMessageTask postMessageTask = new PostMessageTask();
 
         try {
-            if(message.getText().toString().isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(), "Please type Message", Toast.LENGTH_SHORT);
+            if (message.getText().toString().isEmpty()) {
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Please type Message", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 String response = postMessageTask.execute(post).get();

@@ -32,6 +32,7 @@
             android:id="@+id/firstNameEditTextProfile"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/garrulousWhite"
             android:layout_below="@id/firstNameTextView"/>
 
         <TextView
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/lastNameEditTextProfile"
             android:layout_below="@+id/lastNameTextView"
+            android:textColor="@color/garrulousWhite"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -68,6 +70,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/passwordEditText"
             android:layout_below="@+id/passwordTextView"
+            android:textColor="@color/garrulousWhite"
             android:layout_centerHorizontal="true" />
 
         <Button

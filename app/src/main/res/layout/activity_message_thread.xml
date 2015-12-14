@@ -24,3 +24,4 @@
     <include layout="@layout/content_message_thread" />
 
 </android.support.design.widget.CoordinatorLayout>
+
