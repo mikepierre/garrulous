@@ -112,6 +112,7 @@ public class HttpManager {
     public static HashMap putData(Put p)
     {
         String uri = p.getUri();
+        uri += "?" + p.getEncodedParams();
         BufferedReader reader = null;
         try {
             URL url = new URL(uri);
@@ -122,14 +123,14 @@ public class HttpManager {
 
             OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
 
-            try {
+            /*try {
                 writer.write(p.JsonPUT());
                 Log.d("JSON", p.JsonPUT());
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
-
-            writer.flush();
+            }*/
+            writer.write(p.getHttpBody());
+            writer.close();
 
             int responseCode = con.getResponseCode();
             Log.d("Response Status PUT", String.valueOf(responseCode));

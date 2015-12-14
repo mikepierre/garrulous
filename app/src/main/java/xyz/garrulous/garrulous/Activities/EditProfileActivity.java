@@ -30,6 +30,7 @@ import xyz.garrulous.garrulous.Parsers.UserParser;
 import xyz.garrulous.garrulous.R;
 import xyz.garrulous.garrulous.Requests.Get;
 import xyz.garrulous.garrulous.Requests.Post;
+import xyz.garrulous.garrulous.Requests.Put;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -66,6 +67,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -88,14 +91,21 @@ public class EditProfileActivity extends AppCompatActivity {
         task.execute(g);
     }
 
-    private void setUserData(Token token) throws ExecutionException, InterruptedException {
+    private void setUserData(Token token) throws ExecutionException, InterruptedException, JSONException {
         EditProfileTask task = new EditProfileTask();
-        Post p = new Post();
+        Put p = new Put();
         p.setUrn("/v1/user");
         p.setParam("token", token.getSharedToken());
-        String settings = "";
-        p.setHttpBody(settings);
-        String responce = task.execute(p).get();
+        JSONObject json = new JSONObject();
+        json.put("first_name", editFirstName.getText());
+        json.put("last_name", editLastName.getText());
+        String password = passwordEditText.getText().toString();
+        if (password != "") {
+            json.put("password", password);
+        }
+        p.setHttpBody(json.toString());
+        task.execute(p).get();
+        passwordEditText.setText("");
     }
 
     @Override
@@ -131,11 +141,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
 
-    private class EditProfileTask extends AsyncTask<Post, String, String> {
+    private class EditProfileTask extends AsyncTask<Put, String, String> {
 
         @Override
-        protected String doInBackground(Post... params) {
-            HashMap content = HttpManager.postData(params[0]);
+        protected String doInBackground(Put... params) {
+            HashMap content = HttpManager.putData(params[0]);
             // check if any invalid details
             if (content.get("code").equals("403")) {
                 return "{ \"error\": Invalid details}";
